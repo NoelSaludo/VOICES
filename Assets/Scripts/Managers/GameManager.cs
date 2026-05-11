@@ -78,8 +78,8 @@ public class GameManager : MonoBehaviour
         SetState(initialState, true);
         UIManager.Instance().Initialize(this);
         string intro = "event 1";
-        DialogueManager.Instance.AddLine(intro, "Line 1", 0f);
-        DialogueManager.Instance.AddLine(intro, "Line 2", 5f);
+        DialogueManager.Instance.AddLine(intro, "Line 1", 5f);
+        DialogueManager.Instance.AddLine(intro, "Line 2", 4f);
     }
 
     [ContextMenu("Play Event 1")]

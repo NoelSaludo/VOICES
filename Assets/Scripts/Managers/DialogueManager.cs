@@ -22,7 +22,6 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Playback")]
     [SerializeField] private bool clearDialogueAfterPlayback = true;
-    [SerializeField] private bool sortLinesBeforePlayback = true;
 
     private readonly Dictionary<string, List<DialogueLine>> dialogueEvents = new Dictionary<string, List<DialogueLine>>();
     private Coroutine playbackRoutine;
@@ -188,25 +187,15 @@ public class DialogueManager : MonoBehaviour
             yield break;
         }
 
-        if (sortLinesBeforePlayback)
-        {
-            lines.Sort((a, b) => a.Timestamp.CompareTo(b.Timestamp));
-        }
-
         for (int i = 0; i < lines.Count; i++)
         {
             DialogueLine line = lines[i];
             ShowDialogue(line.Line);
 
-            float delay = 0f;
-            if (i + 1 < lines.Count)
+            float duration = Mathf.Max(0f, line.Timestamp);
+            if (duration > 0f)
             {
-                delay = Mathf.Max(0f, lines[i + 1].Timestamp - line.Timestamp);
-            }
-
-            if (delay > 0f)
-            {
-                yield return new WaitForSeconds(delay);
+                yield return new WaitForSeconds(duration);
             }
             else
             {
