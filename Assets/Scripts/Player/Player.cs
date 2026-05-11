@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,6 +32,9 @@ public class Player : MonoBehaviour
     private IPlayerInteractable currentInteractable;
     private Crate attachedCrate;
     private FixedJoint2D moveJoint;
+    private InputAction moveAction;
+    private InputAction interactAction;
+    private InputAction jumpAction;
 
     private void Awake()
     {
@@ -40,33 +45,21 @@ public class Player : MonoBehaviour
         {
             groundLayers = Physics2D.AllLayers;
         }
+
+        moveAction = InputSystem.actions.FindAction("Move");
+        interactAction = InputSystem.actions.FindAction("Interact");
+        jumpAction = InputSystem.actions.FindAction("Jump");
     }
     private void Update()
     {
-        moveInput = 0f;
-
-        Keyboard keyboard = Keyboard.current;
-        if (keyboard != null)
+        moveInput = moveAction.ReadValue<float>();
+        if (interactAction.WasPressedThisFrame())
         {
-            if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed)
-            {
-                moveInput = -1f;
-            }
-
-            if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed)
-            {
-                moveInput = 1f;
-            }
-
-            if (state == PlayerState.Free && keyboard.spaceKey.wasPressedThisFrame)
-            {
-                jumpQueued = true;
-            }
-
-            if (keyboard.eKey.wasPressedThisFrame)
-            {
-                HandleInteract();
-            }
+            HandleInteract();
+        }
+        if(jumpAction.IsPressed())
+        {
+            jumpQueued = true;
         }
     }
 

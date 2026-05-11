@@ -172,7 +172,7 @@ public class DialogueManager : MonoBehaviour
             return cachedUiManager;
         }
 
-        cachedUiManager = FindObjectOfType<UIManager>();
+        cachedUiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
         return cachedUiManager;
     }
 

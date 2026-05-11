@@ -1,5 +1,7 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -132,6 +134,11 @@ public class GameManager : MonoBehaviour
         UIManager.Instance().SetState(GameState.Playing);
     }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void PauseGame()
     {
         SetState(GameState.Paused, false);
@@ -172,6 +179,7 @@ public class GameManager : MonoBehaviour
         {
             CacheTimeScale();
             Time.timeScale = 0f;
+            UIManager.Instance().SetState(GameState.Ended);
         }
         else if (state == GameState.Playing)
         {
