@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = FindObjectOfType<UIManager>();
+            instance = GameObject.Find("UI Manager").GetComponent<UIManager>();
         }
 
         return instance;

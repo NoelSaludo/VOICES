@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &4227084647658089431
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   moveSpeed: 6
   jumpForce: 12
+  movingObjectSpeedMultiplier: 0.5
   groundCheck: {fileID: 7767798537295503744}
   groundCheckRadius: 0.12
   groundLayers:
