@@ -1,12 +1,21 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum PlayerState
+{
+    Free,
+    MovingObject
+}
+
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Player : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 6f;
     [SerializeField] private float jumpForce = 12f;
+
+    [Header("Interaction")]
+    [SerializeField] private float movingObjectSpeedMultiplier = 0.5f;
 
     [Header("Grounding")]
     [SerializeField] private Transform groundCheck;
@@ -17,6 +26,10 @@ public class Player : MonoBehaviour
     private Collider2D col;
     private float moveInput;
     private bool jumpQueued;
+    private PlayerState state = PlayerState.Free;
+    private IPlayerInteractable currentInteractable;
+    private Crate attachedCrate;
+    private FixedJoint2D moveJoint;
 
     private void Awake()
     {
@@ -45,20 +58,31 @@ public class Player : MonoBehaviour
                 moveInput = 1f;
             }
 
-            if (keyboard.spaceKey.wasPressedThisFrame)
+            if (state == PlayerState.Free && keyboard.spaceKey.wasPressedThisFrame)
             {
                 jumpQueued = true;
+            }
+
+            if (keyboard.eKey.wasPressedThisFrame)
+            {
+                HandleInteract();
             }
         }
     }
 
     private void FixedUpdate()
     {
+        float speed = moveSpeed;
+        if (state == PlayerState.MovingObject)
+        {
+            speed *= movingObjectSpeedMultiplier;
+        }
+
         Vector2 velocity = rb.linearVelocity;
-        velocity.x = moveInput * moveSpeed;
+        velocity.x = moveInput * speed;
         rb.linearVelocity = velocity;
 
-        if (jumpQueued && IsGrounded())
+        if (state == PlayerState.Free && jumpQueued && IsGrounded())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -84,22 +108,100 @@ public class Player : MonoBehaviour
         return Physics2D.OverlapCircle(checkPos, groundCheckRadius, groundLayers) != null;
     }
 
+    private void HandleInteract()
+    {
+        if (state == PlayerState.MovingObject && attachedCrate != null)
+        {
+            attachedCrate.Interact(this);
+            return;
+        }
+
+        if (currentInteractable != null)
+        {
+            currentInteractable.Interact(this);
+        }
+    }
+
+    public void AttachToCrate(Crate crate, Vector2 attachPosition)
+    {
+        if (crate == null || state == PlayerState.MovingObject)
+        {
+            return;
+        }
+
+        attachedCrate = crate;
+        state = PlayerState.MovingObject;
+        rb.position = attachPosition;
+        rb.linearVelocity = Vector2.zero;
+        jumpQueued = false;
+
+        if (moveJoint != null)
+        {
+            Destroy(moveJoint);
+        }
+
+        Rigidbody2D crateBody = crate.GetComponent<Rigidbody2D>();
+        if (crateBody != null)
+        {
+            moveJoint = gameObject.AddComponent<FixedJoint2D>();
+            moveJoint.connectedBody = crateBody;
+            moveJoint.autoConfigureConnectedAnchor = true;
+            moveJoint.enableCollision = false;
+        }
+    }
+
+    public void DetachFromCrate(Crate crate)
+    {
+        if (attachedCrate != crate)
+        {
+            return;
+        }
+
+        attachedCrate = null;
+        state = PlayerState.Free;
+
+        if (moveJoint != null)
+        {
+            Destroy(moveJoint);
+            moveJoint = null;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        TryInteract(other.gameObject);
+        SetInteractable(other);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        ClearInteractable(other);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        TryInteract(collision.gameObject);
+        SetInteractable(collision.collider);
     }
 
-    private void TryInteract(GameObject other)
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        ClearInteractable(collision.collider);
+    }
+
+    private void SetInteractable(Collider2D other)
     {
         IPlayerInteractable interactable = other.GetComponent<IPlayerInteractable>();
         if (interactable != null)
         {
-            interactable.Interact(this);
+            currentInteractable = interactable;
+        }
+    }
+
+    private void ClearInteractable(Collider2D other)
+    {
+        IPlayerInteractable interactable = other.GetComponent<IPlayerInteractable>();
+        if (interactable != null && interactable == currentInteractable)
+        {
+            currentInteractable = null;
         }
     }
 }
