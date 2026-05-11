@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
 
     [Header("State")]
     [SerializeField] private GameState initialState = GameState.Playing;
-    [SerializeField] private bool dontDestroyOnLoad = true;
     [SerializeField] private bool freezeTimeWhenPaused = true;
     [SerializeField] private bool freezeTimeWhenEnded = true;
 
@@ -53,10 +52,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
 
-        if (dontDestroyOnLoad)
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -77,11 +73,13 @@ public class GameManager : MonoBehaviour
 
         SetState(initialState, true);
         UIManager.Instance().Initialize(this);
+        // TODO: Remove this before release
         string intro = "event 1";
         DialogueManager.Instance.AddLine(intro, "Line 1", 5f);
         DialogueManager.Instance.AddLine(intro, "Line 2", 4f);
     }
 
+    // TODO: Remove this before release
     [ContextMenu("Play Event 1")]
     public void PlayEvent1()
     {
