@@ -1,5 +1,7 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -18,7 +20,6 @@ public class GameManager : MonoBehaviour
 
     [Header("State")]
     [SerializeField] private GameState initialState = GameState.Playing;
-    [SerializeField] private bool dontDestroyOnLoad = true;
     [SerializeField] private bool freezeTimeWhenPaused = true;
     [SerializeField] private bool freezeTimeWhenEnded = true;
 
@@ -53,10 +54,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
 
-        if (dontDestroyOnLoad)
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -77,6 +75,17 @@ public class GameManager : MonoBehaviour
 
         SetState(initialState, true);
         UIManager.Instance().Initialize(this);
+        // TODO: Remove this before release
+        string intro = "event 1";
+        DialogueManager.Instance.AddLine(intro, "Line 1", 5f);
+        DialogueManager.Instance.AddLine(intro, "Line 2", 4f);
+    }
+
+    // TODO: Remove this before release
+    [ContextMenu("Play Event 1")]
+    public void PlayEvent1()
+    {
+        DialogueManager.Instance.Play("event 1");
     }
 
     private void Update()
@@ -125,6 +134,11 @@ public class GameManager : MonoBehaviour
         UIManager.Instance().SetState(GameState.Playing);
     }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void PauseGame()
     {
         SetState(GameState.Paused, false);
@@ -165,6 +179,7 @@ public class GameManager : MonoBehaviour
         {
             CacheTimeScale();
             Time.timeScale = 0f;
+            UIManager.Instance().SetState(GameState.Ended);
         }
         else if (state == GameState.Playing)
         {

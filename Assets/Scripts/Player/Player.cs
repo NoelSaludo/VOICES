@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,6 +32,13 @@ public class Player : MonoBehaviour
     private IPlayerInteractable currentInteractable;
     private Crate attachedCrate;
     private FixedJoint2D moveJoint;
+    private InputAction moveAction;
+    private InputAction interactAction;
+    private InputAction jumpAction;
+    private InputAction dropAction;
+    private bool dropQueued;
+    private Platform currentPlatform;
+    private Collider2D currentPlatformCollider;
 
     private void Awake()
     {
@@ -40,33 +49,26 @@ public class Player : MonoBehaviour
         {
             groundLayers = Physics2D.AllLayers;
         }
+
+        moveAction = InputSystem.actions.FindAction("Move");
+        interactAction = InputSystem.actions.FindAction("Interact");
+        jumpAction = InputSystem.actions.FindAction("Jump");
+        dropAction = InputSystem.actions.FindAction("Drop");
     }
     private void Update()
     {
-        moveInput = 0f;
-
-        Keyboard keyboard = Keyboard.current;
-        if (keyboard != null)
+        moveInput = moveAction.ReadValue<float>();
+        if (interactAction.WasPressedThisFrame())
         {
-            if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed)
-            {
-                moveInput = -1f;
-            }
-
-            if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed)
-            {
-                moveInput = 1f;
-            }
-
-            if (state == PlayerState.Free && keyboard.spaceKey.wasPressedThisFrame)
-            {
-                jumpQueued = true;
-            }
-
-            if (keyboard.eKey.wasPressedThisFrame)
-            {
-                HandleInteract();
-            }
+            HandleInteract();
+        }
+        if (dropAction != null && dropAction.WasPressedThisFrame())
+        {
+            dropQueued = true;
+        }
+        if(jumpAction.IsPressed())
+        {
+            jumpQueued = true;
         }
     }
 
@@ -86,6 +88,12 @@ public class Player : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+
+        if (dropQueued)
+        {
+            TryDropThroughPlatform();
+            dropQueued = false;
         }
 
         jumpQueued = false;
@@ -180,11 +188,75 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         SetInteractable(collision.collider);
+        UpdateCurrentPlatform(collision);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        UpdateCurrentPlatform(collision);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         ClearInteractable(collision.collider);
+        if (currentPlatformCollider == collision.collider)
+        {
+            currentPlatform = null;
+            currentPlatformCollider = null;
+        }
+    }
+
+    private void TryDropThroughPlatform()
+    {
+        if (state != PlayerState.Free)
+        {
+            return;
+        }
+
+        if (currentPlatform == null || currentPlatformCollider == null)
+        {
+            return;
+        }
+
+        if (!IsGrounded())
+        {
+            return;
+        }
+
+        currentPlatform.RequestDrop(col);
+    }
+
+    private void UpdateCurrentPlatform(Collision2D collision)
+    {
+        Platform platform = collision.collider.GetComponent<Platform>();
+        if (platform == null)
+        {
+            return;
+        }
+
+        if (IsStandingOnCollision(collision))
+        {
+            currentPlatform = platform;
+            currentPlatformCollider = collision.collider;
+        }
+        else if (currentPlatformCollider == collision.collider)
+        {
+            currentPlatform = null;
+            currentPlatformCollider = null;
+        }
+    }
+
+    private bool IsStandingOnCollision(Collision2D collision)
+    {
+        for (int i = 0; i < collision.contactCount; i++)
+        {
+            if (collision.GetContact(i).normal.y > 0.5f)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void SetInteractable(Collider2D other)
