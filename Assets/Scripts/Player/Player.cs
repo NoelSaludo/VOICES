@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         {
             dropQueued = true;
         }
-        if(jumpAction.IsPressed())
+        if(jumpAction.WasPressedThisFrame())
         {
             jumpQueued = true;
         }
