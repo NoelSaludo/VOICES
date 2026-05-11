@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     [Header("Screens")]
     [SerializeField] private GameObject playingScreen;
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject gameOverScreen;
 
     [Header("Playing Screen")]
     [SerializeField] private TMP_Text timerText;
@@ -48,6 +49,8 @@ public class UIManager : MonoBehaviour
         }
 
         instance = this;
+
+        DontDestroyOnLoad(gameObject);
 
         if (pauseButton != null)
         {
@@ -110,6 +113,7 @@ public class UIManager : MonoBehaviour
     {
         bool isPaused = state == GameState.Paused;
         bool isPlaying = state == GameState.Playing;
+        bool isEnded = state == GameState.Ended;
 
         if (playingScreen != null)
         {
@@ -119,6 +123,11 @@ public class UIManager : MonoBehaviour
         if (pauseScreen != null)
         {
             pauseScreen.SetActive(isPaused);
+        }
+
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.SetActive(isEnded);
         }
     }
 
