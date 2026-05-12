@@ -13,12 +13,9 @@ public class Stalker : MonoBehaviour
 
     [Header("Behavior")]
     [SerializeField] private float lingerDuration = 1.2f;
-    [SerializeField] private float dashSpeed = 12f;
-    [SerializeField] private float hitDistance = 0.2f;
 
     private Rigidbody2D rb;
     private float timer;
-    private bool isDashing;
     private bool hasTriggered;
     private bool initialized;
 
@@ -31,13 +28,16 @@ public class Stalker : MonoBehaviour
     {
         ResetState();
         ResolvePlayer();
+    }
+
+    private void Start()
+    {
         TryPlaceNearPlayer();
     }
 
     private void ResetState()
     {
         timer = 0f;
-        isDashing = false;
         hasTriggered = false;
         initialized = false;
     }
@@ -59,30 +59,11 @@ public class Stalker : MonoBehaviour
             TryPlaceNearPlayer();
         }
 
-        if (!isDashing)
+        timer += Time.deltaTime;
+        if (timer >= lingerDuration)
         {
-            timer += Time.deltaTime;
-            if (timer >= lingerDuration)
-            {
-                isDashing = true;
-            }
-            return;
+            TriggerGameOver();
         }
-
-        if (rb == null)
-        {
-            DashTowardsTarget(Time.deltaTime);
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (hasTriggered || !isDashing || rb == null)
-        {
-            return;
-        }
-
-        DashTowardsTarget(Time.fixedDeltaTime);
     }
 
     private bool EnsureTarget()
@@ -151,17 +132,12 @@ public class Stalker : MonoBehaviour
         float clampedMax = Mathf.Max(clampedMin, maxSpawnDistance);
         float distance = Random.Range(clampedMin, clampedMax);
 
-        Vector2 direction = Random.insideUnitCircle;
-        if (direction.sqrMagnitude < 0.001f)
-        {
-            direction = Vector2.right;
-        }
-        else
-        {
-            direction.Normalize();
-        }
-
-        Vector3 spawnPosition = GetTargetPosition() + new Vector3(direction.x, direction.y, 0f) * distance;
+        float horizontalDirection = Random.value < 0.5f ? -1f : 1f;
+        Vector3 targetPosition = GetTargetPosition();
+        Vector3 spawnPosition = new Vector3(
+            targetPosition.x + horizontalDirection * distance,
+            targetPosition.y,
+            targetPosition.z);
 
         if (rb != null)
         {
@@ -174,27 +150,6 @@ public class Stalker : MonoBehaviour
         }
 
         initialized = true;
-    }
-
-    private void DashTowardsTarget(float deltaTime)
-    {
-        Vector3 targetPosition = GetTargetPosition();
-        Vector3 currentPosition = rb != null ? (Vector3)rb.position : transform.position;
-        Vector3 nextPosition = Vector3.MoveTowards(currentPosition, targetPosition, dashSpeed * deltaTime);
-
-        if (rb != null)
-        {
-            rb.MovePosition(nextPosition);
-        }
-        else
-        {
-            transform.position = nextPosition;
-        }
-
-        if (Vector3.Distance(nextPosition, targetPosition) <= hitDistance)
-        {
-            TriggerGameOver();
-        }
     }
 
     private void TriggerGameOver()
@@ -212,44 +167,4 @@ public class Stalker : MonoBehaviour
         }
     }
 
-    private bool IsPlayerCollider(Collider2D collider2d)
-    {
-        if (collider2d == null)
-        {
-            return false;
-        }
-
-        if (collider2d.GetComponent<Player>() != null)
-        {
-            return true;
-        }
-
-        return !string.IsNullOrEmpty(playerTag) && collider2d.CompareTag(playerTag);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!isDashing || hasTriggered)
-        {
-            return;
-        }
-
-        if (IsPlayerCollider(other))
-        {
-            TriggerGameOver();
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!isDashing || hasTriggered)
-        {
-            return;
-        }
-
-        if (collision != null && IsPlayerCollider(collision.collider))
-        {
-            TriggerGameOver();
-        }
-    }
 }

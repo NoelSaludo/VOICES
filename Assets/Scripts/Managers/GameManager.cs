@@ -7,6 +7,7 @@ public enum GameState
     Playing,
     Paused,
     Dialogue,
+    Stalker,
     Ended
 }
 
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
     public Vector3 PlayerPosition => playerTracker.LastPosition;
     public bool IsPlaying => State == GameState.Playing;
     public bool IsPaused => State == GameState.Paused;
+    public bool IsStalker => State == GameState.Stalker;
     public bool IsEnded => State == GameState.Ended;
 
     private void Awake()
@@ -194,6 +196,7 @@ public class GameManager : MonoBehaviour
     private void SpawnStalker()
     {
         hasSpawnedStalker = true;
+        SetState(GameState.Stalker, false);
 
         if (spawnedStalker != null)
         {
