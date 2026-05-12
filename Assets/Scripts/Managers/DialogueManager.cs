@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public struct DialogueLine
@@ -22,6 +23,7 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Playback")]
     [SerializeField] private bool clearDialogueAfterPlayback = true;
+    [SerializeField] private bool useUnscaledTime = true;
 
     private readonly Dictionary<string, List<DialogueLine>> dialogueEvents = new Dictionary<string, List<DialogueLine>>();
     private Coroutine playbackRoutine;
@@ -40,6 +42,16 @@ public class DialogueManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void OnDestroy()
@@ -167,12 +179,15 @@ public class DialogueManager : MonoBehaviour
 
     private UIManager GetUIManager()
     {
-        if (cachedUiManager != null)
+        if (cachedUiManager == null)
         {
-            return cachedUiManager;
+            cachedUiManager = UIManager.Instance;
+            if (cachedUiManager == null)
+            {
+                cachedUiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
+            }
         }
 
-        cachedUiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
         return cachedUiManager;
     }
 
@@ -185,6 +200,7 @@ public class DialogueManager : MonoBehaviour
                 ClearDialogue();
             }
 
+            ResumeGameIfDialogueActive();
             playbackRoutine = null;
             yield break;
         }
@@ -197,7 +213,14 @@ public class DialogueManager : MonoBehaviour
             float duration = Mathf.Max(0f, line.Timestamp);
             if (duration > 0f)
             {
-                yield return new WaitForSeconds(duration);
+                if (useUnscaledTime)
+                {
+                    yield return new WaitForSecondsRealtime(duration);
+                }
+                else
+                {
+                    yield return new WaitForSeconds(duration);
+                }
             }
             else
             {
@@ -211,5 +234,21 @@ public class DialogueManager : MonoBehaviour
         {
             ClearDialogue();
         }
+
+        ResumeGameIfDialogueActive();
+    }
+
+    private void ResumeGameIfDialogueActive()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.State == GameState.Dialogue)
+        {
+            GameManager.Instance.ResumeGame();
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        cachedUiManager = null;
+        Stop(true);
     }
 }

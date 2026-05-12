@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 178632482176716991}
   - component: {fileID: 2556219426635578041}
   m_Layer: 0
-  m_Name: UIManager
+  m_Name: UI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   playingScreen: {fileID: 0}
   pauseScreen: {fileID: 0}
+  gameOverScreen: {fileID: 0}
   timerText: {fileID: 0}
   pauseButton: {fileID: 0}
   continueButton: {fileID: 0}
@@ -53,3 +54,6 @@ MonoBehaviour:
   dialoguePanel: {fileID: 0}
   dialogueText: {fileID: 0}
   hideDialogueWhenEmpty: 1
+  interactionPromptRoot: {fileID: 0}
+  interactionPromptText: {fileID: 0}
+  interactionPromptOffset: {x: 0, y: 1.2, z: 0}

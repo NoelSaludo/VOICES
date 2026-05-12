@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class SoundManager : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float sfxVolume = 1f;
 
+    private AudioBus musicBus;
+    private AudioBus sfxBus;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -26,6 +30,11 @@ public class SoundManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+        musicSource = musicSource != null ? musicSource : GameObject.Find("Music Source").AddComponent<AudioSource>();
+        sfxSource = sfxSource != null ? sfxSource : GameObject.Find("SFX Source").AddComponent<AudioSource>();
+
+        musicBus = new AudioBus(musicSource);
+        sfxBus = new AudioBus(sfxSource);
     }
 
     private void Start()
@@ -35,39 +44,34 @@ public class SoundManager : MonoBehaviour
 
     private void UpdateVolumes()
     {
-        musicSource.volume = musicVolume;
-        sfxSource.volume = sfxVolume;
+        musicBus.ApplyVolume(musicVolume);
+        sfxBus.ApplyVolume(sfxVolume);
     }
 
     public void PlayMusic(AudioClip clip, bool loop = true)
     {
-        if (musicSource.clip == clip)
-            return;
-
-        musicSource.clip = clip;
-        musicSource.loop = loop;
-        musicSource.Play();
+        musicBus.PlayMusic(clip, loop);
     }
 
     public void StopMusic()
     {
-        musicSource.Stop();
+        musicBus.Stop();
     }
 
     public void PlaySFX(AudioClip clip)
     {
-        sfxSource.PlayOneShot(clip, sfxVolume);
+        sfxBus.PlayOneShot(clip, sfxVolume);
     }
 
     public void PlaySFX(AudioClip clip, Vector3 position)
     {
-        AudioSource.PlayClipAtPoint(clip, position, sfxVolume);
+        sfxBus.PlayAtPoint(clip, position, sfxVolume);
     }
 
     public void SetMusicVolume(float volume)
     {
         musicVolume = Mathf.Clamp01(volume);
-        musicSource.volume = musicVolume;
+        musicBus.ApplyVolume(musicVolume);
     }
 
     public void SetSFXVolume(float volume)
@@ -83,5 +87,20 @@ public class SoundManager : MonoBehaviour
     public float GetSFXVolume()
     {
         return sfxVolume;
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Awake();
     }
 }
