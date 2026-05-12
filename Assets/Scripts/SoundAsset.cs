@@ -4,12 +4,13 @@ public class SoundAsset : MonoBehaviour
 {
     public static SoundAsset Instance { get; private set; }
     [Header("SFX")]
-    public AudioClip walking;
+    public AudioClip Walking;
     public AudioClip keyPickup;
 
     public AudioClip doorUnlock;
 
     public AudioClip landJump;
+    public AudioClip Dragging;
 
 
     [Header("Music")]
