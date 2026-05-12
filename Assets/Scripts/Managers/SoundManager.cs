@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         musicSource = musicSource != null ? musicSource : GameObject.Find("Music Source").AddComponent<AudioSource>();
         sfxSource = sfxSource != null ? sfxSource : GameObject.Find("SFX Source").AddComponent<AudioSource>();
+
         musicBus = new AudioBus(musicSource);
         sfxBus = new AudioBus(sfxSource);
     }
@@ -85,5 +87,20 @@ public class SoundManager : MonoBehaviour
     public float GetSFXVolume()
     {
         return sfxVolume;
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Awake();
     }
 }

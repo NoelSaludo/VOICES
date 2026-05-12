@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public struct DialogueLine
@@ -41,7 +42,16 @@ public class DialogueManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+    }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void OnDestroy()
@@ -169,12 +179,15 @@ public class DialogueManager : MonoBehaviour
 
     private UIManager GetUIManager()
     {
-        if (cachedUiManager != null)
+        if (cachedUiManager == null)
         {
-            return cachedUiManager;
+            cachedUiManager = UIManager.Instance;
+            if (cachedUiManager == null)
+            {
+                cachedUiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
+            }
         }
 
-        cachedUiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
         return cachedUiManager;
     }
 
@@ -231,5 +244,11 @@ public class DialogueManager : MonoBehaviour
         {
             GameManager.Instance.ResumeGame();
         }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        cachedUiManager = null;
+        Stop(true);
     }
 }
