@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ccaea751a6278004bbc345e3c99ded7b
+guid: 8e4eaab6149a6bc41a93e90206dd3c49
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1955448553306655712
-    second: Background_0
+      213: -5578313666786227691
+    second: Black Skybox_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background_0
+      name: Black Skybox_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 676
+        width: 1152
+        height: 1152
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 024fa93b6e9dcd4e0800000000000000
-      internalID: -1955448553306655712
+      spriteID: 51a00857649d592b0800000000000000
+      internalID: -5578313666786227691
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Background_0: -1955448553306655712
+      Black Skybox_0: -5578313666786227691
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

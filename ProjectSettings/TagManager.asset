@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Skybox
+    uniqueID: 443402351
+    locked: 0
   - name: BG
     uniqueID: 3524531265
     locked: 0
