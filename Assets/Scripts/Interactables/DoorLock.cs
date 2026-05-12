@@ -57,6 +57,7 @@ public class DoorLock : MonoBehaviour, IPlayerInteractable
     private void Unlock()
     {
         unlocked = true;
+        SoundManager.Instance.PlaySFX(SoundAsset.Instance.DoorUnlock);
 
         if (doorCollider != null)
         {

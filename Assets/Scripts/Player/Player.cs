@@ -40,6 +40,9 @@ public class Player : MonoBehaviour
     private Platform currentPlatform;
     private Collider2D currentPlatformCollider;
 
+    public float MoveInput => moveInput;
+    public PlayerState State => state;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -58,6 +61,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         moveInput = moveAction.ReadValue<float>();
+
         if (interactAction.WasPressedThisFrame())
         {
             HandleInteract();
@@ -66,7 +70,7 @@ public class Player : MonoBehaviour
         {
             dropQueued = true;
         }
-        if(jumpAction.WasPressedThisFrame())
+        if (jumpAction.WasPressedThisFrame())
         {
             jumpQueued = true;
         }
@@ -99,7 +103,7 @@ public class Player : MonoBehaviour
         jumpQueued = false;
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         Vector2 checkPos;
 

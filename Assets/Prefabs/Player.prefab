@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4227084647658089431}
   - component: {fileID: 3047387507337063998}
   - component: {fileID: 2657880412706343973}
+  - component: {fileID: 6546338591663073531}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -142,6 +143,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338405a6a0eeb3344a85ccacedc38aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerKeyInventory
+--- !u!114 &6546338591663073531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144048493385332460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe8943e9b3a1b142b08a71e565e753f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSfx
+  playerAudioSource: {fileID: 0}
+  walkingSfxInterval: 0.4
+  draggingSfxInterval: 0.8
 --- !u!1 &4426617832406950238
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +274,7 @@ Transform:
   m_GameObject: {fileID: 4680676537144418996}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.29, z: 0}
+  m_LocalPosition: {x: 0, y: -1.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
