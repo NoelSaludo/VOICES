@@ -80,10 +80,7 @@ public class GameManager : MonoBehaviour
         }
 
         SetState(initialState, true);
-        uiManager = UIManager.Instance;
-        uiManager.Initialize(this);
-        uiManager.PauseRequested += PauseGame;
-        uiManager.ContinueRequested += ResumeGame;
+        BindUIManager();
         // TODO: Remove this before release
         string intro = "event 1";
         DialogueManager.Instance.AddLine(intro, "Line 1", 5f);
@@ -121,6 +118,16 @@ public class GameManager : MonoBehaviour
         {
             OnPlayerPositionChanged?.Invoke(playerTracker.LastPosition);
         }
+    }
+
+    public void RegisterPlayer(Player playerComponent)
+    {
+        if (playerComponent == null)
+        {
+            return;
+        }
+
+        SetPlayer(playerComponent.transform);
     }
 
     public void ResetTimer()
@@ -184,13 +191,87 @@ public class GameManager : MonoBehaviour
             state => UIManager.Instance.SetState(state));
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Time.timeScale = 1f;
+        ResolvePlayer();
+        BindUIManager();
+        if (runTimer)
+        {
+            ResetTimer();
+        }
+        SetState(initialState, true);
+
+        if (SoundAsset.Instance != null || SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayMusic(SoundAsset.Instance.BackgroundMusic, true);
+        }
+
+    }
+
+    private void ResolvePlayer()
+    {
+        if (player != null)
+        {
+            return;
+        }
+
+        Player playerComponent = FindObjectOfType<Player>();
+        if (playerComponent != null)
+        {
+            SetPlayer(playerComponent.transform);
+            return;
+        }
+
+        playerTracker.TryAutoFind(autoFindPlayer);
+        player = playerTracker.Player;
+    }
+
+    private void BindUIManager()
+    {
+        UIManager instance = UIManager.Instance;
+        if (instance == null)
+        {
+            return;
+        }
+
+        if (uiManager == instance)
+        {
+            return;
+        }
+
+        UnbindUIManager();
+        uiManager = instance;
+        uiManager.Initialize(this);
+        uiManager.PauseRequested += PauseGame;
+        uiManager.ContinueRequested += ResumeGame;
+    }
+
+    private void UnbindUIManager()
+    {
+        if (uiManager == null)
+        {
+            return;
+        }
+
+        uiManager.PauseRequested -= PauseGame;
+        uiManager.ContinueRequested -= ResumeGame;
+        uiManager = null;
+    }
+
     private void OnDestroy()
     {
-        if (uiManager != null)
-        {
-            uiManager.PauseRequested -= PauseGame;
-            uiManager.ContinueRequested -= ResumeGame;
-        }
+        UnbindUIManager();
 
         if (Instance == this)
         {
