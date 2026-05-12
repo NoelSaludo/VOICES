@@ -275,6 +275,7 @@ public class UIManager : MonoBehaviour
             var screenRoot = screenCanvas.transform;
             playingScreen = FindChild(screenRoot, "Playing Screen");
             pauseScreen = FindChild(screenRoot, "Pause Screen");
+            gameOverScreen = FindChild(screenRoot, "Game Over Screen");
             dialoguePanel = FindChild(screenRoot, "Dialogue Panel");
 
             var timerObject = FindChild(screenRoot, "Timer");
@@ -291,6 +292,11 @@ public class UIManager : MonoBehaviour
 
             var exitButtonObject = FindChild(screenRoot, "Pause Screen/Pause Panel/Exit Btn");
             exitButton = exitButtonObject != null ? exitButtonObject.GetComponent<Button>() : null;
+        }
+
+        if (gameOverScreen == null)
+        {
+            Debug.LogWarning("UIManager: Game Over Screen not found. Expected under Screen Space/Game Over Screen.");
         }
 
         var worldCanvas = GameObject.Find("World Space Canvas");
