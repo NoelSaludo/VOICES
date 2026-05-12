@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.Serialization;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ public enum GameState
 {
     Playing,
     Paused,
+    Dialogue,
     Ended
 }
 
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameState initialState = GameState.Playing;
     [SerializeField] private bool freezeTimeWhenPaused = true;
     [SerializeField] private bool freezeTimeWhenEnded = true;
+    [SerializeField] private bool freezeTimeWhenDialogue = true;
 
     [Header("Timer")]
     [SerializeField] private bool runTimer = true;
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
     private GameState state;
     private Vector3 lastPlayerPosition;
     private float previousTimeScale = 1f;
+    private UIManager uiManager;
 
     public GameState State => state;
     public float ElapsedTime => elapsedTime;
@@ -74,7 +78,10 @@ public class GameManager : MonoBehaviour
         }
 
         SetState(initialState, true);
-        UIManager.Instance().Initialize(this);
+        uiManager = UIManager.Instance();
+        uiManager.Initialize(this);
+        uiManager.PauseRequested += PauseGame;
+        uiManager.ContinueRequested += ResumeGame;
         // TODO: Remove this before release
         string intro = "event 1";
         DialogueManager.Instance.AddLine(intro, "Line 1", 5f);
@@ -88,6 +95,8 @@ public class GameManager : MonoBehaviour
     public void PlayEvent1()
     {
         DialogueManager.Instance.Play("event 1");
+        DialogueTime();
+        
     }
 
     private void Update()
@@ -151,6 +160,11 @@ public class GameManager : MonoBehaviour
         SetState(GameState.Playing, false);
     }
 
+    public void DialogueTime()
+    {
+        SetState(GameState.Dialogue, false);
+    }
+
     public void EndGame()
     {
         SetState(GameState.Ended, false);
@@ -183,8 +197,14 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
             UIManager.Instance().SetState(GameState.Ended);
         }
+        else if (state == GameState.Dialogue && freezeTimeWhenDialogue)
+        {
+            CacheTimeScale();
+            Time.timeScale = 0f;
+        }
         else if (state == GameState.Playing)
         {
+            UIManager.Instance().SetState(GameState.Playing);
             Time.timeScale = Mathf.Approximately(previousTimeScale, 0f) ? 1f : previousTimeScale;
         }
 
@@ -201,6 +221,12 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (uiManager != null)
+        {
+            uiManager.PauseRequested -= PauseGame;
+            uiManager.ContinueRequested -= ResumeGame;
+        }
+
         if (Instance == this)
         {
             Instance = null;

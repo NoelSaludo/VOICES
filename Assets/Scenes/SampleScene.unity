@@ -935,6 +935,7 @@ MonoBehaviour:
   initialState: 0
   freezeTimeWhenPaused: 1
   freezeTimeWhenEnded: 1
+  freezeTimeWhenDialogue: 1
   runTimer: 1
   player: {fileID: 0}
   autoFindPlayer: 1
@@ -2305,7 +2306,7 @@ PrefabInstance:
       objectReference: {fileID: 341952909}
     - target: {fileID: 8328192762977893388, guid: 0a3a1e36c314c974092f9c530c4764da, type: 3}
       propertyPath: m_Name
-      value: UIManager
+      value: UI Manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2737,7 +2738,7 @@ PrefabInstance:
     - target: {fileID: 4080546756666519039, guid: 6dc6e546127d355459c0abd79a437580, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 796314378}
     - target: {fileID: 4080546756666519039, guid: 6dc6e546127d355459c0abd79a437580, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2

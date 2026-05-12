@@ -24,6 +24,7 @@ public class PlayerSfx : MonoBehaviour
         }
 
         if (player.State == PlayerState.MovingObject) walkingSfxInterval = 0.8f;
+        else walkingSfxInterval = 0.4f;
 
         if (player.MoveInput != 0f && player.IsGrounded() && Time.time >= nextWalkingSfxTime)
         {
