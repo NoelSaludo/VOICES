@@ -34,11 +34,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private bool hideDialogueWhenEmpty = true;
 
+    [Header("Interaction Prompt")]
+    [SerializeField] private GameObject interactionPromptRoot;
+    [SerializeField] private TMP_Text interactionPromptText;
+    [SerializeField] private Vector3 interactionPromptOffset = new Vector3(0f, 1.2f, 0f);
+
     public event Action PauseRequested;
     public event Action ContinueRequested;
     public event Action ExitRequested;
 
     private GameManager boundManager;
+    private Transform currentPromptAnchor;
 
     private void Awake()
     {
@@ -66,6 +72,16 @@ public class UIManager : MonoBehaviour
         {
             exitButton.onClick.AddListener(ExitButtonPressed);
         }
+    }
+
+    private void LateUpdate()
+    {
+        if (interactionPromptRoot == null || currentPromptAnchor == null)
+        {
+            return;
+        }
+
+        interactionPromptRoot.transform.position = currentPromptAnchor.position + interactionPromptOffset;
     }
 
     private void OnDestroy()
@@ -183,6 +199,41 @@ public class UIManager : MonoBehaviour
         {
             dialoguePanel.SetActive(false);
         }
+    }
+
+    public void ShowInteractionPrompt(string text, Transform anchor)
+    {
+        if (interactionPromptRoot != null)
+        {
+            interactionPromptRoot.SetActive(true);
+        }
+
+        if (interactionPromptText != null)
+        {
+            interactionPromptText.text = text ?? string.Empty;
+        }
+
+        currentPromptAnchor = anchor;
+
+        if (interactionPromptRoot != null && currentPromptAnchor != null)
+        {
+            interactionPromptRoot.transform.position = currentPromptAnchor.position + interactionPromptOffset;
+        }
+    }
+
+    public void HideInteractionPrompt()
+    {
+        if (interactionPromptRoot != null)
+        {
+            interactionPromptRoot.SetActive(false);
+        }
+
+        if (interactionPromptText != null)
+        {
+            interactionPromptText.text = string.Empty;
+        }
+
+        currentPromptAnchor = null;
     }
 
     public void PauseButtonPressed()

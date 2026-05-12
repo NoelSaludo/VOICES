@@ -3,12 +3,18 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class DoorLock : MonoBehaviour, IPlayerInteractable
 {
+    [SerializeField] private string interactionVerb = "Unlock";
+    [SerializeField] private Transform promptAnchor;
+    [SerializeField] private string noKeyDialogue = "MissingKeyEvent";
     [SerializeField] private string keyId;
     [SerializeField] private bool consumeKey = true;
     [SerializeField] private Collider2D doorCollider;
     [SerializeField] private SpriteRenderer doorRenderer;
 
     private bool unlocked;
+
+    public string InteractionVerb => interactionVerb;
+    public Transform PromptAnchor => promptAnchor != null ? promptAnchor : transform;
 
     private void Awake()
     {
@@ -38,6 +44,13 @@ public class DoorLock : MonoBehaviour, IPlayerInteractable
         PlayerKeyInventory inventory = player.GetComponent<PlayerKeyInventory>();
         if (inventory == null)
         {
+            ShowNoKeyDialogue();
+            return;
+        }
+
+        if (!inventory.HasAnyKey())
+        {
+            ShowNoKeyDialogue();
             return;
         }
 
@@ -52,6 +65,17 @@ public class DoorLock : MonoBehaviour, IPlayerInteractable
         }
 
         Unlock();
+    }
+
+    private void ShowNoKeyDialogue()
+    {
+        if (string.IsNullOrWhiteSpace(noKeyDialogue))
+        {
+            return;
+        }
+
+        GameManager.Instance.DialogueTime();
+        DialogueManager.Instance.Play(noKeyDialogue);
     }
 
     private void Unlock()

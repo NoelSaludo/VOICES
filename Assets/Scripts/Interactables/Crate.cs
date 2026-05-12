@@ -3,11 +3,17 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Crate : MonoBehaviour, IPlayerInteractable
 {
+    [SerializeField] private string interactionVerb = "Hold";
+    [SerializeField] private string interactionAttachedVerb = "Release";
+    [SerializeField] private Transform promptAnchor;
     [SerializeField] private float attachPadding = 0.05f;
 
     private Rigidbody2D rb;
     private Collider2D col;
     private Player attachedPlayer;
+
+    public string InteractionVerb => attachedPlayer != null ? interactionAttachedVerb : interactionVerb;
+    public Transform PromptAnchor => promptAnchor != null ? promptAnchor : transform;
 
     private void Awake()
     {
@@ -60,7 +66,7 @@ public class Crate : MonoBehaviour, IPlayerInteractable
         Collider2D playerCollider = player.GetComponent<Collider2D>();
         Bounds playerBounds = playerCollider != null ? playerCollider.bounds : new Bounds(player.transform.position, Vector3.one);
 
-        float direction = player.transform.position.x < crateBounds.center.x ? -1f : 1f;
+        float direction = player.transform.position.x < crateBounds.center.x ? -0.95f : 0.95f;
         float x = crateBounds.center.x + direction * (crateBounds.extents.x + playerBounds.extents.x + attachPadding);
         float y = player.transform.position.y;
 

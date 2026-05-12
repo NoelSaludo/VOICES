@@ -19,6 +19,10 @@ public class PlayerInteractionHandler
     }
 
     public PlayerState State => state;
+    public IPlayerInteractable CurrentInteractable => currentInteractable;
+    public Crate AttachedCrate => attachedCrate;
+
+    public event System.Action<IPlayerInteractable> InteractableChanged;
 
     public void HandleInteract()
     {
@@ -83,18 +87,24 @@ public class PlayerInteractionHandler
     public void SetInteractable(Collider2D other)
     {
         IPlayerInteractable interactable = other.GetComponent<IPlayerInteractable>();
-        if (interactable != null)
+        if (interactable == null || interactable == currentInteractable)
         {
-            currentInteractable = interactable;
+            return;
         }
+
+        currentInteractable = interactable;
+        InteractableChanged?.Invoke(currentInteractable);
     }
 
     public void ClearInteractable(Collider2D other)
     {
         IPlayerInteractable interactable = other.GetComponent<IPlayerInteractable>();
-        if (interactable != null && interactable == currentInteractable)
+        if (interactable == null || interactable != currentInteractable)
         {
-            currentInteractable = null;
+            return;
         }
+
+        currentInteractable = null;
+        InteractableChanged?.Invoke(null);
     }
 }

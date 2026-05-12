@@ -10,6 +10,8 @@ public enum PlayerState
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Player : MonoBehaviour
 {
+    private const string InteractionPromptPrefix = "E to ";
+
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 6f;
     [SerializeField] private float jumpForce = 12f;
@@ -56,6 +58,23 @@ public class Player : MonoBehaviour
         interactionHandler = new PlayerInteractionHandler(this, rb, gameObject);
         platformHandler = new PlayerPlatformHandler(col, groundChecker.IsGrounded);
     }
+
+    private void OnEnable()
+    {
+        if (interactionHandler != null)
+        {
+            interactionHandler.InteractableChanged += HandleInteractableChanged;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (interactionHandler != null)
+        {
+            interactionHandler.InteractableChanged -= HandleInteractableChanged;
+        }
+    }
+
     private void Update()
     {
         movementController.SetMoveInput(moveAction.ReadValue<float>());
@@ -63,6 +82,7 @@ public class Player : MonoBehaviour
         if (interactAction.WasPressedThisFrame())
         {
             interactionHandler.HandleInteract();
+            UpdateInteractionPrompt(interactionHandler.CurrentInteractable);
         }
         if (dropAction != null && dropAction.WasPressedThisFrame())
         {
@@ -129,9 +149,60 @@ public class Player : MonoBehaviour
         interactionHandler.ClearInteractable(collision.collider);
         platformHandler.OnCollisionExit(collision);
     }
+
+    private void HandleInteractableChanged(IPlayerInteractable interactable)
+    {
+        UpdateInteractionPrompt(interactable);
+    }
+
+    private void UpdateInteractionPrompt(IPlayerInteractable interactable)
+    {
+        UIManager uiManager = UIManager.Instance();
+        if (uiManager == null)
+        {
+            return;
+        }
+
+        IPlayerInteractable promptInteractable = interactable;
+        if (State == PlayerState.MovingObject && interactionHandler != null && interactionHandler.AttachedCrate != null)
+        {
+            promptInteractable = interactionHandler.AttachedCrate;
+        }
+
+        if (!IsInteractableValid(promptInteractable))
+        {
+            uiManager.HideInteractionPrompt();
+            return;
+        }
+
+        string verb = promptInteractable.InteractionVerb;
+        if (string.IsNullOrWhiteSpace(verb))
+        {
+            verb = "Interact";
+        }
+
+        uiManager.ShowInteractionPrompt($"{InteractionPromptPrefix}{verb}", promptInteractable.PromptAnchor);
+    }
+
+    private bool IsInteractableValid(IPlayerInteractable interactable)
+    {
+        if (interactable == null)
+        {
+            return false;
+        }
+
+        if (interactable is Object unityObject && unityObject == null)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }
 
 public interface IPlayerInteractable
 {
     void Interact(Player player);
+    string InteractionVerb { get; }
+    Transform PromptAnchor { get; }
 }
