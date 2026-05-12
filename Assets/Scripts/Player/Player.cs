@@ -23,6 +23,10 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.12f;
     [SerializeField] private LayerMask groundLayers;
+    [SerializeField] private AudioSource playerAudioSource;
+
+    [Header("Audio")]
+    [SerializeField] private float walkingSfxInterval = 0.4f;
 
     private Rigidbody2D rb;
     private Collider2D col;
@@ -39,6 +43,7 @@ public class Player : MonoBehaviour
     private bool dropQueued;
     private Platform currentPlatform;
     private Collider2D currentPlatformCollider;
+    private float nextWalkingSfxTime;
 
     private void Awake()
     {
@@ -58,6 +63,12 @@ public class Player : MonoBehaviour
     private void Update()
     {
         moveInput = moveAction.ReadValue<float>();
+        if (moveInput != 0f && IsGrounded() && Time.time >= nextWalkingSfxTime)
+        {
+            SoundManager.Instance.PlaySFX(SoundAsset.Instance.walking);
+            nextWalkingSfxTime = Time.time + walkingSfxInterval;
+        }
+
         if (interactAction.WasPressedThisFrame())
         {
             HandleInteract();
@@ -66,7 +77,7 @@ public class Player : MonoBehaviour
         {
             dropQueued = true;
         }
-        if(jumpAction.WasPressedThisFrame())
+        if (jumpAction.WasPressedThisFrame())
         {
             jumpQueued = true;
         }
