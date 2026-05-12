@@ -67,6 +67,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RegisterPlayer(this);
+        }
+    }
+
     private void OnDisable()
     {
         if (interactionHandler != null)

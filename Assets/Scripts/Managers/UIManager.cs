@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -49,20 +50,8 @@ public class UIManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        if (pauseButton != null)
-        {
-            pauseButton.onClick.AddListener(PauseButtonPressed);
-        }
+        RebindUIReferences();
 
-        if (continueButton != null)
-        {
-            continueButton.onClick.AddListener(ContinueButtonPressed);
-        }
-
-        if (exitButton != null)
-        {
-            exitButton.onClick.AddListener(ExitButtonPressed);
-        }
     }
 
     private void LateUpdate()
@@ -81,6 +70,19 @@ public class UIManager : MonoBehaviour
         {
             Instance = null;
         }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        BindButtonEvents();
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        UnbindButtonEvents();
+        Unbind();
     }
 
     public void Initialize(GameManager manager)
@@ -248,4 +250,105 @@ public class UIManager : MonoBehaviour
         int seconds = Mathf.FloorToInt(time % 60f);
         return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        RebindUIReferences();
+        UnbindButtonEvents();
+        BindButtonEvents();
+        Initialize(GameManager.Instance);
+        currentPromptAnchor = null;
+        HideInteractionPrompt();
+        ClearDialogue();
+        if (boundManager != null)
+        {
+            SetState(boundManager.State);
+            SetTimer(boundManager.ElapsedTime);
+        }
+    }
+
+    private void RebindUIReferences()
+    {
+        var screenCanvas = GameObject.Find("Screen Space");
+        if (screenCanvas != null)
+        {
+            var screenRoot = screenCanvas.transform;
+            playingScreen = FindChild(screenRoot, "Playing Screen");
+            pauseScreen = FindChild(screenRoot, "Pause Screen");
+            dialoguePanel = FindChild(screenRoot, "Dialogue Panel");
+
+            var timerObject = FindChild(screenRoot, "Timer");
+            timerText = timerObject != null ? timerObject.GetComponent<TMP_Text>() : null;
+
+            var pauseButtonObject = FindChild(screenRoot, "Playing Screen/Pause Btn");
+            pauseButton = pauseButtonObject != null ? pauseButtonObject.GetComponent<Button>() : null;
+
+            var dialogueTextObject = FindChild(screenRoot, "Dialogue Panel/Dialogue Text");
+            dialogueText = dialogueTextObject != null ? dialogueTextObject.GetComponent<TMP_Text>() : null;
+
+            var continueButtonObject = FindChild(screenRoot, "Pause Screen/Pause Panel/Continue Btn");
+            continueButton = continueButtonObject != null ? continueButtonObject.GetComponent<Button>() : null;
+
+            var exitButtonObject = FindChild(screenRoot, "Pause Screen/Pause Panel/Exit Btn");
+            exitButton = exitButtonObject != null ? exitButtonObject.GetComponent<Button>() : null;
+        }
+
+        var worldCanvas = GameObject.Find("World Space Canvas");
+        if (worldCanvas != null)
+        {
+            var worldRoot = worldCanvas.transform;
+            interactionPromptRoot = FindChild(worldRoot, "Interaction Prompt");
+
+            var promptTextObject = FindChild(worldRoot, "Interaction Prompt/Interaction Text");
+            interactionPromptText = promptTextObject != null ? promptTextObject.GetComponent<TMP_Text>() : null;
+        }
+    }
+
+    private static GameObject FindChild(Transform root, string path)
+    {
+        if (root == null)
+        {
+            return null;
+        }
+
+        var child = root.Find(path);
+        return child != null ? child.gameObject : null;
+    }
+
+    private void BindButtonEvents()
+    {
+        if (pauseButton != null)
+        {
+            pauseButton.onClick.AddListener(PauseButtonPressed);
+        }
+
+        if (continueButton != null)
+        {
+            continueButton.onClick.AddListener(ContinueButtonPressed);
+        }
+
+        if (exitButton != null)
+        {
+            exitButton.onClick.AddListener(ExitButtonPressed);
+        }
+    }
+
+    private void UnbindButtonEvents()
+    {
+        if (pauseButton != null)
+        {
+            pauseButton.onClick.RemoveListener(PauseButtonPressed);
+        }
+
+        if (continueButton != null)
+        {
+            continueButton.onClick.RemoveListener(ContinueButtonPressed);
+        }
+
+        if (exitButton != null)
+        {
+            exitButton.onClick.RemoveListener(ExitButtonPressed);
+        }
+    }
+
 }
