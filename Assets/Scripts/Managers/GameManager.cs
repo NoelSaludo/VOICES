@@ -74,6 +74,11 @@ public class GameManager : MonoBehaviour
             player = playerTracker.Player;
         }
 
+        if (SoundAsset.Instance != null || SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayMusic(SoundAsset.Instance.BackgroundMusic, true);
+        }
+
         SetState(initialState, true);
         uiManager = UIManager.Instance;
         uiManager.Initialize(this);
@@ -83,8 +88,6 @@ public class GameManager : MonoBehaviour
         string intro = "event 1";
         DialogueManager.Instance.AddLine(intro, "Line 1", 5f);
         DialogueManager.Instance.AddLine(intro, "Line 2", 4f);
-        
-        SoundManager.Instance.PlayMusic(SoundAsset.Instance.BackgroundMusic, true);
     }
 
     // TODO: Remove this before release
