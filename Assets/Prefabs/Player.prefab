@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe8943e9b3a1b142b08a71e565e753f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSfx
-  playerAudioSource: {fileID: 2129285433756274514}
+  playerAudioSource: {fileID: 0}
   walkingSfxInterval: 0.4
   draggingSfxInterval: 1
 --- !u!1 &4426617832406950238
@@ -567,7 +567,7 @@ Transform:
   m_GameObject: {fileID: 7576916712435130114}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 3, z: -10}
+  m_LocalPosition: {x: -0.01, y: -0.03, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

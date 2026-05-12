@@ -34,6 +34,12 @@ public class PlayerMovementController
         jumpQueued = false;
     }
 
+    public void ClearQueuedInputs()
+    {
+        jumpQueued = false;
+        dropQueued = false;
+    }
+
     public void Tick(
         PlayerState state,
         float moveSpeed,

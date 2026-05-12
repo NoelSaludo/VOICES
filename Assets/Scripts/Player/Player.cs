@@ -85,6 +85,13 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance != null && GameManager.Instance.State == GameState.Stalker)
+        {
+            movementController.SetMoveInput(0f);
+            movementController.ClearQueuedInputs();
+            return;
+        }
+
         movementController.SetMoveInput(moveAction.ReadValue<float>());
 
         if (interactAction.WasPressedThisFrame())
