@@ -60,8 +60,8 @@ Canvas:
   m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 688711429
+  m_SortingOrder: 104
   m_TargetDisplay: 0
 --- !u!114 &5910804498599665731
 MonoBehaviour:
@@ -114,6 +114,22 @@ PrefabInstance:
     - target: {fileID: 647536202524789148, guid: cb12074f2f34eb94fae50f3c90640a65, type: 3}
       propertyPath: m_Name
       value: Interaction Prompt
+      objectReference: {fileID: 0}
+    - target: {fileID: 647536202524789148, guid: cb12074f2f34eb94fae50f3c90640a65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199674482905815408, guid: cb12074f2f34eb94fae50f3c90640a65, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 49.404
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199674482905815408, guid: cb12074f2f34eb94fae50f3c90640a65, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 11.754
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199674482905815408, guid: cb12074f2f34eb94fae50f3c90640a65, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000086784
       objectReference: {fileID: 0}
     - target: {fileID: 3855914157106033283, guid: cb12074f2f34eb94fae50f3c90640a65, type: 3}
       propertyPath: m_Pivot.x

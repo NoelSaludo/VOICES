@@ -53,6 +53,9 @@ TagManager:
   - name: FG
     uniqueID: 4257286437
     locked: 0
+  - name: UI
+    uniqueID: 688711429
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

@@ -31,7 +31,7 @@ public class DoorLock : MonoBehaviour, IPlayerInteractable
     }
     private void Start()
     {
-        DialogueManager.Instance.AddLine(noKeyDialogue, "I need a key", 2.5f);
+        DialogueManager.Instance.AddLine(noKeyDialogue, "I need a key", 0.5f);
     }
 
     public void Interact(Player player)
