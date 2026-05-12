@@ -278,4 +278,14 @@ public class GameManager : MonoBehaviour
             Instance = null;
         }
     }
+
+    internal void LoadScene(string nextSceneName)
+    {
+        if (string.IsNullOrEmpty(nextSceneName))
+        {
+            return;
+        }
+
+        SceneManager.LoadScene(nextSceneName);
+    }
 }
