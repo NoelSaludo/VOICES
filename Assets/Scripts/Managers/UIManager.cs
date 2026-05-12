@@ -5,16 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    private static UIManager instance;
-    public static UIManager Instance()
-    {
-        if (instance == null)
-        {
-            instance = GameObject.Find("UI Manager").GetComponent<UIManager>();
-        }
-
-        return instance;
-    }
+    public static UIManager Instance {get; private set;}
 
     [Header("Screens")]
     [SerializeField] private GameObject playingScreen;
@@ -48,13 +39,13 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        instance = this;
+        Instance = this;
 
         DontDestroyOnLoad(gameObject);
 
@@ -86,9 +77,9 @@ public class UIManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (instance == this)
+        if (Instance == this)
         {
-            instance = null;
+            Instance = null;
         }
     }
 

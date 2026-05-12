@@ -27,6 +27,11 @@ public class DoorLock : MonoBehaviour, IPlayerInteractable
         {
             doorRenderer = GetComponent<SpriteRenderer>();
         }
+
+    }
+    private void Start()
+    {
+        DialogueManager.Instance.AddLine(noKeyDialogue, "I need a key", 2.5f);
     }
 
     public void Interact(Player player)
@@ -56,6 +61,7 @@ public class DoorLock : MonoBehaviour, IPlayerInteractable
 
         if (!inventory.HasKey(keyId))
         {
+            ShowNoKeyDialogue();
             return;
         }
 
@@ -67,15 +73,11 @@ public class DoorLock : MonoBehaviour, IPlayerInteractable
         Unlock();
     }
 
+    [ContextMenu("Show No Key Dialogue")]
     private void ShowNoKeyDialogue()
     {
-        if (string.IsNullOrWhiteSpace(noKeyDialogue))
-        {
-            return;
-        }
-
-        GameManager.Instance.DialogueTime();
         DialogueManager.Instance.Play(noKeyDialogue);
+        GameManager.Instance.DialogueTime();
     }
 
     private void Unlock()

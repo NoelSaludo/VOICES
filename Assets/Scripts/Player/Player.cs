@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
 
     private void UpdateInteractionPrompt(IPlayerInteractable interactable)
     {
-        UIManager uiManager = UIManager.Instance();
+        UIManager uiManager = UIManager.Instance;
         if (uiManager == null)
         {
             return;

@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         }
 
         SetState(initialState, true);
-        uiManager = UIManager.Instance();
+        uiManager = UIManager.Instance;
         uiManager.Initialize(this);
         uiManager.PauseRequested += PauseGame;
         uiManager.ContinueRequested += ResumeGame;
@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
         }
 
         SetState(GameState.Playing, false);
-        UIManager.Instance().SetState(GameState.Playing);
+        UIManager.Instance.SetState(GameState.Playing);
     }
 
     public void RestartGame()
@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour
             freezeTimeWhenEnded,
             freezeTimeWhenDialogue,
             OnStateChanged,
-            state => UIManager.Instance().SetState(state));
+            state => UIManager.Instance.SetState(state));
     }
 
     private void OnDestroy()

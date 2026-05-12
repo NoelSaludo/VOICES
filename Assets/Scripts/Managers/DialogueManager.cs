@@ -42,11 +42,6 @@ public class DialogueManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-
-        // Default events
-        dialogueEvents["MissingKeyEvent"] = new(){
-            new DialogueLine("I need a key", 3f)
-            };
     }
 
     private void OnDestroy()
