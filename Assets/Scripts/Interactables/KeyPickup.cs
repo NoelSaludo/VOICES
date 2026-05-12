@@ -45,6 +45,7 @@ public class KeyPickup : MonoBehaviour
 
         inventory.AddKey(keyId);
         pickedUp = true;
+        SoundManager.Instance.PlaySFX(SoundAsset.Instance.KeyPickup);
 
         if (destroyOnPickup)
         {

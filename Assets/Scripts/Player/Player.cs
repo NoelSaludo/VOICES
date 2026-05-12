@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +10,8 @@ public enum PlayerState
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Player : MonoBehaviour
 {
+    private const string InteractionPromptPrefix = "E to ";
+
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 6f;
     [SerializeField] private float jumpForce = 12f;
@@ -26,19 +26,17 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private Collider2D col;
-    private float moveInput;
-    private bool jumpQueued;
-    private PlayerState state = PlayerState.Free;
-    private IPlayerInteractable currentInteractable;
-    private Crate attachedCrate;
-    private FixedJoint2D moveJoint;
     private InputAction moveAction;
     private InputAction interactAction;
     private InputAction jumpAction;
     private InputAction dropAction;
-    private bool dropQueued;
-    private Platform currentPlatform;
-    private Collider2D currentPlatformCollider;
+    private GroundChecker groundChecker;
+    private PlayerMovementController movementController;
+    private PlayerInteractionHandler interactionHandler;
+    private PlayerPlatformHandler platformHandler;
+
+    public float MoveInput => movementController != null ? movementController.MoveInput : 0f;
+    public PlayerState State => interactionHandler != null ? interactionHandler.State : PlayerState.Free;
 
     private void Awake()
     {
@@ -54,231 +52,157 @@ public class Player : MonoBehaviour
         interactAction = InputSystem.actions.FindAction("Interact");
         jumpAction = InputSystem.actions.FindAction("Jump");
         dropAction = InputSystem.actions.FindAction("Drop");
+
+        groundChecker = new GroundChecker(groundCheck, col, groundCheckRadius, groundLayers);
+        movementController = new PlayerMovementController(rb);
+        interactionHandler = new PlayerInteractionHandler(this, rb, gameObject);
+        platformHandler = new PlayerPlatformHandler(col, groundChecker.IsGrounded);
     }
+
+    private void OnEnable()
+    {
+        if (interactionHandler != null)
+        {
+            interactionHandler.InteractableChanged += HandleInteractableChanged;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (interactionHandler != null)
+        {
+            interactionHandler.InteractableChanged -= HandleInteractableChanged;
+        }
+    }
+
     private void Update()
     {
-        moveInput = moveAction.ReadValue<float>();
+        movementController.SetMoveInput(moveAction.ReadValue<float>());
+
         if (interactAction.WasPressedThisFrame())
         {
-            HandleInteract();
+            interactionHandler.HandleInteract();
+            UpdateInteractionPrompt(interactionHandler.CurrentInteractable);
         }
         if (dropAction != null && dropAction.WasPressedThisFrame())
         {
-            dropQueued = true;
+            movementController.QueueDrop();
         }
-        if(jumpAction.WasPressedThisFrame())
+        if (jumpAction.WasPressedThisFrame())
         {
-            jumpQueued = true;
+            movementController.QueueJump();
         }
     }
 
     private void FixedUpdate()
     {
-        float speed = moveSpeed;
-        if (state == PlayerState.MovingObject)
-        {
-            speed *= movingObjectSpeedMultiplier;
-        }
-
-        Vector2 velocity = rb.linearVelocity;
-        velocity.x = moveInput * speed;
-        rb.linearVelocity = velocity;
-
-        if (state == PlayerState.Free && jumpQueued && IsGrounded())
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }
-
-        if (dropQueued)
-        {
-            TryDropThroughPlatform();
-            dropQueued = false;
-        }
-
-        jumpQueued = false;
+        movementController.Tick(
+            State,
+            moveSpeed,
+            jumpForce,
+            movingObjectSpeedMultiplier,
+            groundChecker.IsGrounded,
+            () => platformHandler.TryDropThroughPlatform(State));
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
-        Vector2 checkPos;
-
-        if (groundCheck != null)
-        {
-            checkPos = groundCheck.position;
-        }
-        else
-        {
-            float y = col.bounds.min.y - 0.02f;
-            checkPos = new Vector2(col.bounds.center.x, y);
-        }
-
-        return Physics2D.OverlapCircle(checkPos, groundCheckRadius, groundLayers) != null;
-    }
-
-    private void HandleInteract()
-    {
-        if (state == PlayerState.MovingObject && attachedCrate != null)
-        {
-            attachedCrate.Interact(this);
-            return;
-        }
-
-        if (currentInteractable != null)
-        {
-            currentInteractable.Interact(this);
-        }
+        return groundChecker != null && groundChecker.IsGrounded();
     }
 
     public void AttachToCrate(Crate crate, Vector2 attachPosition)
     {
-        if (crate == null || state == PlayerState.MovingObject)
+        if (interactionHandler.AttachToCrate(crate, attachPosition))
         {
-            return;
-        }
-
-        attachedCrate = crate;
-        state = PlayerState.MovingObject;
-        rb.position = attachPosition;
-        rb.linearVelocity = Vector2.zero;
-        jumpQueued = false;
-
-        if (moveJoint != null)
-        {
-            Destroy(moveJoint);
-        }
-
-        Rigidbody2D crateBody = crate.GetComponent<Rigidbody2D>();
-        if (crateBody != null)
-        {
-            moveJoint = gameObject.AddComponent<FixedJoint2D>();
-            moveJoint.connectedBody = crateBody;
-            moveJoint.autoConfigureConnectedAnchor = true;
-            moveJoint.enableCollision = false;
+            movementController.ClearJumpQueue();
         }
     }
 
     public void DetachFromCrate(Crate crate)
     {
-        if (attachedCrate != crate)
-        {
-            return;
-        }
-
-        attachedCrate = null;
-        state = PlayerState.Free;
-
-        if (moveJoint != null)
-        {
-            Destroy(moveJoint);
-            moveJoint = null;
-        }
+        interactionHandler.DetachFromCrate(crate);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        SetInteractable(other);
+        interactionHandler.SetInteractable(other);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        ClearInteractable(other);
+        interactionHandler.ClearInteractable(other);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        SetInteractable(collision.collider);
-        UpdateCurrentPlatform(collision);
+        interactionHandler.SetInteractable(collision.collider);
+        platformHandler.OnCollisionEnter(collision);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        UpdateCurrentPlatform(collision);
+        platformHandler.OnCollisionStay(collision);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        ClearInteractable(collision.collider);
-        if (currentPlatformCollider == collision.collider)
-        {
-            currentPlatform = null;
-            currentPlatformCollider = null;
-        }
+        interactionHandler.ClearInteractable(collision.collider);
+        platformHandler.OnCollisionExit(collision);
     }
 
-    private void TryDropThroughPlatform()
+    private void HandleInteractableChanged(IPlayerInteractable interactable)
     {
-        if (state != PlayerState.Free)
+        UpdateInteractionPrompt(interactable);
+    }
+
+    private void UpdateInteractionPrompt(IPlayerInteractable interactable)
+    {
+        UIManager uiManager = UIManager.Instance;
+        if (uiManager == null)
         {
             return;
         }
 
-        if (currentPlatform == null || currentPlatformCollider == null)
+        IPlayerInteractable promptInteractable = interactable;
+        if (State == PlayerState.MovingObject && interactionHandler != null && interactionHandler.AttachedCrate != null)
         {
+            promptInteractable = interactionHandler.AttachedCrate;
+        }
+
+        if (!IsInteractableValid(promptInteractable))
+        {
+            uiManager.HideInteractionPrompt();
             return;
         }
 
-        if (!IsGrounded())
+        string verb = promptInteractable.InteractionVerb;
+        if (string.IsNullOrWhiteSpace(verb))
         {
-            return;
+            verb = "Interact";
         }
 
-        currentPlatform.RequestDrop(col);
+        uiManager.ShowInteractionPrompt($"{InteractionPromptPrefix}{verb}", promptInteractable.PromptAnchor);
     }
 
-    private void UpdateCurrentPlatform(Collision2D collision)
+    private bool IsInteractableValid(IPlayerInteractable interactable)
     {
-        Platform platform = collision.collider.GetComponent<Platform>();
-        if (platform == null)
+        if (interactable == null)
         {
-            return;
+            return false;
         }
 
-        if (IsStandingOnCollision(collision))
+        if (interactable is Object unityObject && unityObject == null)
         {
-            currentPlatform = platform;
-            currentPlatformCollider = collision.collider;
-        }
-        else if (currentPlatformCollider == collision.collider)
-        {
-            currentPlatform = null;
-            currentPlatformCollider = null;
-        }
-    }
-
-    private bool IsStandingOnCollision(Collision2D collision)
-    {
-        for (int i = 0; i < collision.contactCount; i++)
-        {
-            if (collision.GetContact(i).normal.y > 0.5f)
-            {
-                return true;
-            }
+            return false;
         }
 
-        return false;
-    }
-
-    private void SetInteractable(Collider2D other)
-    {
-        IPlayerInteractable interactable = other.GetComponent<IPlayerInteractable>();
-        if (interactable != null)
-        {
-            currentInteractable = interactable;
-        }
-    }
-
-    private void ClearInteractable(Collider2D other)
-    {
-        IPlayerInteractable interactable = other.GetComponent<IPlayerInteractable>();
-        if (interactable != null && interactable == currentInteractable)
-        {
-            currentInteractable = null;
-        }
+        return true;
     }
 }
 
 public interface IPlayerInteractable
 {
     void Interact(Player player);
+    string InteractionVerb { get; }
+    Transform PromptAnchor { get; }
 }

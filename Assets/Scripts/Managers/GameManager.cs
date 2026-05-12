@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +6,7 @@ public enum GameState
 {
     Playing,
     Paused,
+    Dialogue,
     Ended
 }
 
@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameState initialState = GameState.Playing;
     [SerializeField] private bool freezeTimeWhenPaused = true;
     [SerializeField] private bool freezeTimeWhenEnded = true;
+    [SerializeField] private bool freezeTimeWhenDialogue = true;
 
     [Header("Timer")]
     [SerializeField] private bool runTimer = true;
@@ -32,17 +33,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string playerTag = "Player";
     [SerializeField] private float positionEpsilon = 0.0001f;
 
-    private float elapsedTime;
-    private GameState state;
-    private Vector3 lastPlayerPosition;
-    private float previousTimeScale = 1f;
+    private GameTimer timer;
+    private PlayerTracker playerTracker;
+    private GameStateController stateController;
+    private UIManager uiManager;
 
-    public GameState State => state;
-    public float ElapsedTime => elapsedTime;
-    public Vector3 PlayerPosition => lastPlayerPosition;
-    public bool IsPlaying => state == GameState.Playing;
-    public bool IsPaused => state == GameState.Paused;
-    public bool IsEnded => state == GameState.Ended;
+    public GameState State => stateController.State;
+    public float ElapsedTime => timer.ElapsedTime;
+    public Vector3 PlayerPosition => playerTracker.LastPosition;
+    public bool IsPlaying => State == GameState.Playing;
+    public bool IsPaused => State == GameState.Paused;
+    public bool IsEnded => State == GameState.Ended;
 
     private void Awake()
     {
@@ -55,30 +56,35 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+
+        timer = new GameTimer();
+        playerTracker = new PlayerTracker(playerTag, positionEpsilon);
+        stateController = new GameStateController();
     }
 
     private void Start()
     {
-        if (autoFindPlayer && player == null && !string.IsNullOrEmpty(playerTag))
-        {
-            GameObject playerObject = GameObject.FindGameObjectWithTag(playerTag);
-            if (playerObject != null)
-            {
-                player = playerObject.transform;
-            }
-        }
-
         if (player != null)
         {
-            lastPlayerPosition = player.position;
+            playerTracker.SetPlayer(player);
+        }
+        else
+        {
+            playerTracker.TryAutoFind(autoFindPlayer);
+            player = playerTracker.Player;
         }
 
         SetState(initialState, true);
-        UIManager.Instance().Initialize(this);
+        uiManager = UIManager.Instance;
+        uiManager.Initialize(this);
+        uiManager.PauseRequested += PauseGame;
+        uiManager.ContinueRequested += ResumeGame;
         // TODO: Remove this before release
         string intro = "event 1";
         DialogueManager.Instance.AddLine(intro, "Line 1", 5f);
         DialogueManager.Instance.AddLine(intro, "Line 2", 4f);
+        
+        SoundManager.Instance.PlayMusic(SoundAsset.Instance.BackgroundMusic, true);
     }
 
     // TODO: Remove this before release
@@ -86,41 +92,38 @@ public class GameManager : MonoBehaviour
     public void PlayEvent1()
     {
         DialogueManager.Instance.Play("event 1");
+        DialogueTime();
+        
     }
 
     private void Update()
     {
-        if (state == GameState.Playing && runTimer)
+        if (State == GameState.Playing && runTimer)
         {
-            elapsedTime += Time.deltaTime;
-            OnTimerChanged?.Invoke(elapsedTime);
+            timer.Tick(Time.deltaTime);
+            OnTimerChanged?.Invoke(timer.ElapsedTime);
         }
 
-        if (player != null)
+        if (playerTracker.UpdatePosition())
         {
-            Vector3 pos = player.position;
-            if ((pos - lastPlayerPosition).sqrMagnitude > positionEpsilon)
-            {
-                lastPlayerPosition = pos;
-                OnPlayerPositionChanged?.Invoke(lastPlayerPosition);
-            }
+            OnPlayerPositionChanged?.Invoke(playerTracker.LastPosition);
         }
     }
 
     public void SetPlayer(Transform playerTransform)
     {
         player = playerTransform;
+        playerTracker.SetPlayer(playerTransform);
         if (player != null)
         {
-            lastPlayerPosition = player.position;
-            OnPlayerPositionChanged?.Invoke(lastPlayerPosition);
+            OnPlayerPositionChanged?.Invoke(playerTracker.LastPosition);
         }
     }
 
     public void ResetTimer()
     {
-        elapsedTime = 0f;
-        OnTimerChanged?.Invoke(elapsedTime);
+        timer.Reset();
+        OnTimerChanged?.Invoke(timer.ElapsedTime);
     }
 
     public void StartGame(bool resetTimer = true)
@@ -131,7 +134,7 @@ public class GameManager : MonoBehaviour
         }
 
         SetState(GameState.Playing, false);
-        UIManager.Instance().SetState(GameState.Playing);
+        UIManager.Instance.SetState(GameState.Playing);
     }
 
     public void RestartGame()
@@ -149,6 +152,11 @@ public class GameManager : MonoBehaviour
         SetState(GameState.Playing, false);
     }
 
+    public void DialogueTime()
+    {
+        SetState(GameState.Dialogue, false);
+    }
+
     public void EndGame()
     {
         SetState(GameState.Ended, false);
@@ -156,49 +164,31 @@ public class GameManager : MonoBehaviour
 
     public string GetTimerString()
     {
-        int minutes = Mathf.FloorToInt(elapsedTime / 60f);
-        int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+        int minutes = Mathf.FloorToInt(timer.ElapsedTime / 60f);
+        int seconds = Mathf.FloorToInt(timer.ElapsedTime % 60f);
         return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     private void SetState(GameState newState, bool force)
     {
-        if (!force && state == newState)
-        {
-            return;
-        }
-
-        state = newState;
-
-        if (state == GameState.Paused && freezeTimeWhenPaused)
-        {
-            CacheTimeScale();
-            Time.timeScale = 0f;
-        }
-        else if (state == GameState.Ended && freezeTimeWhenEnded)
-        {
-            CacheTimeScale();
-            Time.timeScale = 0f;
-            UIManager.Instance().SetState(GameState.Ended);
-        }
-        else if (state == GameState.Playing)
-        {
-            Time.timeScale = Mathf.Approximately(previousTimeScale, 0f) ? 1f : previousTimeScale;
-        }
-
-        OnStateChanged?.Invoke(state);
-    }
-
-    private void CacheTimeScale()
-    {
-        if (Time.timeScale > 0f)
-        {
-            previousTimeScale = Time.timeScale;
-        }
+        stateController.SetState(
+            newState,
+            force,
+            freezeTimeWhenPaused,
+            freezeTimeWhenEnded,
+            freezeTimeWhenDialogue,
+            OnStateChanged,
+            state => UIManager.Instance.SetState(state));
     }
 
     private void OnDestroy()
     {
+        if (uiManager != null)
+        {
+            uiManager.PauseRequested -= PauseGame;
+            uiManager.ContinueRequested -= ResumeGame;
+        }
+
         if (Instance == this)
         {
             Instance = null;

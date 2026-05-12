@@ -5,6 +5,11 @@ public class PlayerKeyInventory : MonoBehaviour
 {
     private readonly HashSet<string> keys = new HashSet<string>();
 
+    public bool HasAnyKey()
+    {
+        return keys.Count > 0;
+    }
+
     public bool AddKey(string keyId)
     {
         if (string.IsNullOrWhiteSpace(keyId))

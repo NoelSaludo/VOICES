@@ -5,16 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    private static UIManager instance;
-    public static UIManager Instance()
-    {
-        if (instance == null)
-        {
-            instance = GameObject.Find("UI Manager").GetComponent<UIManager>();
-        }
-
-        return instance;
-    }
+    public static UIManager Instance {get; private set;}
 
     [Header("Screens")]
     [SerializeField] private GameObject playingScreen;
@@ -34,21 +25,27 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private bool hideDialogueWhenEmpty = true;
 
+    [Header("Interaction Prompt")]
+    [SerializeField] private GameObject interactionPromptRoot;
+    [SerializeField] private TMP_Text interactionPromptText;
+    [SerializeField] private Vector3 interactionPromptOffset = new Vector3(0f, 1.2f, 0f);
+
     public event Action PauseRequested;
     public event Action ContinueRequested;
     public event Action ExitRequested;
 
     private GameManager boundManager;
+    private Transform currentPromptAnchor;
 
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        instance = this;
+        Instance = this;
 
         DontDestroyOnLoad(gameObject);
 
@@ -68,11 +65,21 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        if (interactionPromptRoot == null || currentPromptAnchor == null)
+        {
+            return;
+        }
+
+        interactionPromptRoot.transform.position = currentPromptAnchor.position + interactionPromptOffset;
+    }
+
     private void OnDestroy()
     {
-        if (instance == this)
+        if (Instance == this)
         {
-            instance = null;
+            Instance = null;
         }
     }
 
@@ -183,6 +190,41 @@ public class UIManager : MonoBehaviour
         {
             dialoguePanel.SetActive(false);
         }
+    }
+
+    public void ShowInteractionPrompt(string text, Transform anchor)
+    {
+        if (interactionPromptRoot != null)
+        {
+            interactionPromptRoot.SetActive(true);
+        }
+
+        if (interactionPromptText != null)
+        {
+            interactionPromptText.text = text ?? string.Empty;
+        }
+
+        currentPromptAnchor = anchor;
+
+        if (interactionPromptRoot != null && currentPromptAnchor != null)
+        {
+            interactionPromptRoot.transform.position = currentPromptAnchor.position + interactionPromptOffset;
+        }
+    }
+
+    public void HideInteractionPrompt()
+    {
+        if (interactionPromptRoot != null)
+        {
+            interactionPromptRoot.SetActive(false);
+        }
+
+        if (interactionPromptText != null)
+        {
+            interactionPromptText.text = string.Empty;
+        }
+
+        currentPromptAnchor = null;
     }
 
     public void PauseButtonPressed()
