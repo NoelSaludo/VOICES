@@ -9,11 +9,12 @@ public class PlayerSfx : MonoBehaviour
     [SerializeField] private float draggingSfxInterval = 0.8f;
 
     private Player player;
-    private float nextWalkingSfxTime;
+    private PlayerSfxLogic sfxLogic;
 
     private void Awake()
     {
         player = GetComponent<Player>();
+        sfxLogic = new PlayerSfxLogic();
     }
 
     private void LateUpdate()
@@ -26,12 +27,13 @@ public class PlayerSfx : MonoBehaviour
         if (player.State == PlayerState.MovingObject) walkingSfxInterval = 0.8f;
         else walkingSfxInterval = 0.4f;
 
-        if (player.MoveInput != 0f && player.IsGrounded() && Time.time >= nextWalkingSfxTime)
+        if (!sfxLogic.TryScheduleWalking(player, walkingSfxInterval))
         {
-            PlayWalkingSfx();
-            PlayingPushingSFX();
-            nextWalkingSfxTime = Time.time + walkingSfxInterval;
+            return;
         }
+
+        PlayWalkingSfx();
+        PlayDraggingSfx();
     }
 
     private void PlayWalkingSfx()
@@ -41,31 +43,16 @@ public class PlayerSfx : MonoBehaviour
             return;
         }
 
-        if (playerAudioSource != null)
-        {
-            float volume = 1f;
-            if (SoundManager.Instance != null)
-            {
-                volume = SoundManager.Instance.GetSFXVolume();
-            }
+        SfxEmitter.PlayWithLocalFallback(playerAudioSource, SoundAsset.Instance.Walking);
+    }
 
-            playerAudioSource.PlayOneShot(SoundAsset.Instance.Walking, volume);
+    private void PlayDraggingSfx()
+    {
+        if (!sfxLogic.ShouldPlayDragging(player, draggingSfxInterval))
+        {
             return;
         }
 
-        if (SoundManager.Instance != null)
-        {
-            SoundManager.Instance.PlaySFX(SoundAsset.Instance.Walking);
-        }
-    }
-
-    private void PlayingPushingSFX()
-    {
-        if (player.IsGrounded() &&
-            player.State == PlayerState.MovingObject &&
-            Time.time >= draggingSfxInterval)
-        {
-            SoundManager.Instance.PlaySFX(SoundAsset.Instance.Dragging);
-        }
+        SfxEmitter.PlayViaManager(SoundAsset.Instance.Dragging);
     }
 }
