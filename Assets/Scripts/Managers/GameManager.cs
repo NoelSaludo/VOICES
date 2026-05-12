@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
 
     [Header("Timer")]
     [SerializeField] private bool runTimer = true;
+    [SerializeField] private float startingCountdownSeconds = 10f;
+
+    [Header("Stalker")]
+    [SerializeField] private Stalker stalkerPrefab;
+    [SerializeField] private bool findSceneStalkerIfPrefabMissing = true;
 
     [Header("Player Tracking")]
     [SerializeField] private Transform player;
@@ -37,9 +42,11 @@ public class GameManager : MonoBehaviour
     private PlayerTracker playerTracker;
     private GameStateController stateController;
     private UIManager uiManager;
+    private Stalker spawnedStalker;
+    private bool hasSpawnedStalker;
 
     public GameState State => stateController.State;
-    public float ElapsedTime => timer.ElapsedTime;
+    public float RemainingTime => timer.RemainingTime;
     public Vector3 PlayerPosition => playerTracker.LastPosition;
     public bool IsPlaying => State == GameState.Playing;
     public bool IsPaused => State == GameState.Paused;
@@ -101,7 +108,11 @@ public class GameManager : MonoBehaviour
         if (State == GameState.Playing && runTimer)
         {
             timer.Tick(Time.deltaTime);
-            OnTimerChanged?.Invoke(timer.ElapsedTime);
+            OnTimerChanged?.Invoke(timer.RemainingTime);
+            if (!hasSpawnedStalker && timer.IsComplete)
+            {
+                SpawnStalker();
+            }
         }
 
         if (playerTracker.UpdatePosition())
@@ -132,8 +143,9 @@ public class GameManager : MonoBehaviour
 
     public void ResetTimer()
     {
-        timer.Reset();
-        OnTimerChanged?.Invoke(timer.ElapsedTime);
+        timer.Reset(startingCountdownSeconds);
+        hasSpawnedStalker = false;
+        OnTimerChanged?.Invoke(timer.RemainingTime);
     }
 
     public void StartGame(bool resetTimer = true)
@@ -174,9 +186,38 @@ public class GameManager : MonoBehaviour
 
     public string GetTimerString()
     {
-        int minutes = Mathf.FloorToInt(timer.ElapsedTime / 60f);
-        int seconds = Mathf.FloorToInt(timer.ElapsedTime % 60f);
+        int minutes = Mathf.FloorToInt(timer.RemainingTime / 60f);
+        int seconds = Mathf.FloorToInt(timer.RemainingTime % 60f);
         return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    private void SpawnStalker()
+    {
+        hasSpawnedStalker = true;
+
+        if (spawnedStalker != null)
+        {
+            if (!spawnedStalker.gameObject.activeSelf)
+            {
+                spawnedStalker.gameObject.SetActive(true);
+            }
+            return;
+        }
+
+        if (stalkerPrefab != null)
+        {
+            spawnedStalker = Instantiate(stalkerPrefab);
+            return;
+        }
+
+        if (findSceneStalkerIfPrefabMissing)
+        {
+            spawnedStalker = FindAnyObjectByType<Stalker>(FindObjectsInactive.Include);
+            if (spawnedStalker != null && !spawnedStalker.gameObject.activeSelf)
+            {
+                spawnedStalker.gameObject.SetActive(true);
+            }
+        }
     }
 
     private void SetState(GameState newState, bool force)
@@ -226,7 +267,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        Player playerComponent = FindObjectOfType<Player>();
+        Player playerComponent = FindAnyObjectByType<Player>();
         if (playerComponent != null)
         {
             SetPlayer(playerComponent.transform);

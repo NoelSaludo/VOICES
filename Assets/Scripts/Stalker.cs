@@ -108,7 +108,7 @@ public class Stalker : MonoBehaviour
             return;
         }
 
-        Player playerComponent = FindObjectOfType<Player>();
+        Player playerComponent = FindAnyObjectByType<Player>();
         if (playerComponent != null)
         {
             player = playerComponent.transform;

@@ -103,7 +103,7 @@ public class UIManager : MonoBehaviour
         boundManager.OnTimerChanged += SetTimer;
 
         SetState(boundManager.State);
-        SetTimer(boundManager.ElapsedTime);
+        SetTimer(boundManager.RemainingTime);
     }
 
     public void Unbind()
@@ -263,7 +263,7 @@ public class UIManager : MonoBehaviour
         if (boundManager != null)
         {
             SetState(boundManager.State);
-            SetTimer(boundManager.ElapsedTime);
+            SetTimer(boundManager.RemainingTime);
         }
     }
 

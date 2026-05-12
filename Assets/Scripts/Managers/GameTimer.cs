@@ -1,16 +1,25 @@
+using UnityEngine;
+
 public class GameTimer
 {
-    private float elapsedTime;
+    private float remainingTime;
 
-    public float ElapsedTime => elapsedTime;
+    public float RemainingTime => remainingTime;
+    public bool IsComplete => remainingTime <= 0f;
 
     public void Tick(float deltaTime)
     {
-        elapsedTime += deltaTime;
+        if (remainingTime <= 0f)
+        {
+            remainingTime = 0f;
+            return;
+        }
+
+        remainingTime = Mathf.Max(0f, remainingTime - deltaTime);
     }
 
-    public void Reset()
+    public void Reset(float startingTime)
     {
-        elapsedTime = 0f;
+        remainingTime = Mathf.Max(0f, startingTime);
     }
 }
