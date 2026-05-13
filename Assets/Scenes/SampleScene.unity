@@ -466,62 +466,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &796314377
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 796314379}
-  - component: {fileID: 796314378}
-  m_Layer: 0
-  m_Name: Game Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &796314378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796314377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55ca957c94e30144b82172cf308fd3b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  initialState: 0
-  freezeTimeWhenPaused: 1
-  freezeTimeWhenEnded: 1
-  freezeTimeWhenDialogue: 1
-  runTimer: 1
-  startingCountdownSeconds: 3
-  stalkerPrefab: {fileID: 3357363718984995957, guid: 248985ec04f05924b8d2a69b61d34e50, type: 3}
-  findSceneStalkerIfPrefabMissing: 1
-  player: {fileID: 0}
-  autoFindPlayer: 1
-  playerTag: Player
-  positionEpsilon: 0.0001
---- !u!4 &796314379
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796314377}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06096, y: -1.16483, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1135269480 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 647536202524789148, guid: cb12074f2f34eb94fae50f3c90640a65, type: 3}
@@ -974,6 +918,62 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 259317931037002532, guid: f73b5f90f00f4cc48a22feb80d5d485c, type: 3}
   m_PrefabInstance: {fileID: 3185877528150961108}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1954799043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1954799045}
+  - component: {fileID: 1954799044}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1954799044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954799043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ca957c94e30144b82172cf308fd3b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  initialState: 0
+  freezeTimeWhenPaused: 1
+  freezeTimeWhenEnded: 1
+  freezeTimeWhenDialogue: 1
+  runTimer: 1
+  startingCountdownSeconds: 20
+  stalkerPrefab: {fileID: 3357363718984995957, guid: 248985ec04f05924b8d2a69b61d34e50, type: 3}
+  findSceneStalkerIfPrefabMissing: 1
+  player: {fileID: 0}
+  autoFindPlayer: 1
+  playerTag: Player
+  positionEpsilon: 0.0001
+--- !u!4 &1954799045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954799043}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &17892581535113350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1193,18 +1193,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5377801274628599031, guid: f004d1586fe027a45a61f13ae4625e51, type: 3}
-      propertyPath: sfxSource
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5377801274628599031, guid: f004d1586fe027a45a61f13ae4625e51, type: 3}
-      propertyPath: musicSource
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5377801274628599031, guid: f004d1586fe027a45a61f13ae4625e51, type: 3}
-      propertyPath: musicVolume
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7380038566576597239, guid: f004d1586fe027a45a61f13ae4625e51, type: 3}
       propertyPath: m_Name
       value: Sound Manager
@@ -1265,7 +1253,7 @@ PrefabInstance:
     - target: {fileID: 238304260501128351, guid: f73b5f90f00f4cc48a22feb80d5d485c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 796314378}
+      objectReference: {fileID: 0}
     - target: {fileID: 259317931037002532, guid: f73b5f90f00f4cc48a22feb80d5d485c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1353,7 +1341,7 @@ PrefabInstance:
     - target: {fileID: 5799590395298898622, guid: f73b5f90f00f4cc48a22feb80d5d485c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 796314378}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2031,7 +2019,7 @@ PrefabInstance:
     - target: {fileID: 4080546756666519039, guid: 6dc6e546127d355459c0abd79a437580, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 796314378}
+      objectReference: {fileID: 0}
     - target: {fileID: 7984647360722381361, guid: 6dc6e546127d355459c0abd79a437580, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2130,8 +2118,8 @@ SceneRoots:
   - {fileID: 6612724049810947608}
   - {fileID: 1818508114217278783}
   - {fileID: 17892581535113350}
+  - {fileID: 1954799045}
   - {fileID: 185711367}
-  - {fileID: 796314379}
   - {fileID: 6359311785892305190}
   - {fileID: 6725668286097264963}
   - {fileID: 3406515740776994397}

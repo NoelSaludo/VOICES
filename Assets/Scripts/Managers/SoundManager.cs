@@ -30,11 +30,7 @@ public class SoundManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
-        musicSource = musicSource != null ? musicSource : GameObject.Find("Music Source").AddComponent<AudioSource>();
-        sfxSource = sfxSource != null ? sfxSource : GameObject.Find("SFX Source").AddComponent<AudioSource>();
-
-        musicBus = new AudioBus(musicSource);
-        sfxBus = new AudioBus(sfxSource);
+        EnsureAudioSources();
     }
 
     private void Start()
@@ -101,13 +97,30 @@ public class SoundManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (musicSource == null || sfxSource == null)
+        EnsureAudioSources();
+    }
+
+    private void EnsureAudioSources()
+    {
+        if (musicSource == null)
         {
-            musicSource = musicSource != null ? musicSource : GameObject.Find("Music Source")?.AddComponent<AudioSource>();
-            sfxSource = sfxSource != null ? sfxSource : GameObject.Find("SFX Source")?.AddComponent<AudioSource>();
-            musicBus = new AudioBus(musicSource);
-            sfxBus = new AudioBus(sfxSource);
-            UpdateVolumes();
+            musicSource = CreateChildAudioSource("Music Source");
         }
+
+        if (sfxSource == null)
+        {
+            sfxSource = CreateChildAudioSource("SFX Source");
+        }
+
+        musicBus = new AudioBus(musicSource);
+        sfxBus = new AudioBus(sfxSource);
+        UpdateVolumes();
+    }
+
+    private AudioSource CreateChildAudioSource(string name)
+    {
+        var child = new GameObject(name);
+        child.transform.SetParent(transform, false);
+        return child.AddComponent<AudioSource>();
     }
 }

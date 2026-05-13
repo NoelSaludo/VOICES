@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   musicSource: {fileID: 0}
   sfxSource: {fileID: 0}
-  musicVolume: 1
+  musicVolume: 0.5
   sfxVolume: 1
