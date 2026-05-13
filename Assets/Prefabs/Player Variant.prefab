@@ -140,6 +140,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2144048493385332460, guid: ac6d810ceabc4704ca6ac70bf48f5387, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5134108241527123583}
     - targetCorrespondingSourceObject: {fileID: 4426617832406950238, guid: ac6d810ceabc4704ca6ac70bf48f5387, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3239756668685027514}
@@ -171,3 +174,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &3065766990280058631 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2144048493385332460, guid: ac6d810ceabc4704ca6ac70bf48f5387, type: 3}
+  m_PrefabInstance: {fileID: 3984272158346138091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5134108241527123583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3065766990280058631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0cfa59e03b4e0649b7ac33e30881967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
+  player: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  animator: {fileID: 0}
