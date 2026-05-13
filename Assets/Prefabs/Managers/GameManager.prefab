@@ -45,10 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   initialState: 0
-  dontDestroyOnLoad: 1
   freezeTimeWhenPaused: 1
   freezeTimeWhenEnded: 1
+  freezeTimeWhenDialogue: 1
   runTimer: 1
+  startingCountdownSeconds: 10
+  stalkerPrefab: {fileID: 0}
+  findSceneStalkerIfPrefabMissing: 1
   player: {fileID: 0}
   autoFindPlayer: 1
   playerTag: Player
