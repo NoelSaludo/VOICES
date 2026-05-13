@@ -26,37 +26,55 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private Collider2D col;
+
     private InputAction moveAction;
     private InputAction interactAction;
     private InputAction jumpAction;
     private InputAction dropAction;
+
     private GroundChecker groundChecker;
     private PlayerMovementController movementController;
     private PlayerInteractionHandler interactionHandler;
     private PlayerPlatformHandler platformHandler;
 
-    public float MoveInput => movementController != null ? movementController.MoveInput : 0f;
-    public PlayerState State => interactionHandler != null ? interactionHandler.State : PlayerState.Free;
+    public float MoveInput =>
+        movementController != null ? movementController.MoveInput : 0f;
 
+    public PlayerState State =>
+        interactionHandler != null ? interactionHandler.State : PlayerState.Free;
+
+    // ---------------------------
+    // INIT
+    // ---------------------------
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
 
         if (groundLayers == 0)
-        {
             groundLayers = Physics2D.AllLayers;
-        }
 
         moveAction = InputSystem.actions.FindAction("Move");
         interactAction = InputSystem.actions.FindAction("Interact");
         jumpAction = InputSystem.actions.FindAction("Jump");
         dropAction = InputSystem.actions.FindAction("Drop");
 
-        groundChecker = new GroundChecker(groundCheck, col, groundCheckRadius, groundLayers);
+        groundChecker = new GroundChecker(
+            groundCheck,
+            col,
+            groundCheckRadius,
+            groundLayers);
+
         movementController = new PlayerMovementController(rb);
-        interactionHandler = new PlayerInteractionHandler(this, rb, gameObject);
-        platformHandler = new PlayerPlatformHandler(col, groundChecker.IsGrounded);
+
+        interactionHandler = new PlayerInteractionHandler(
+            this,
+            rb,
+            gameObject);
+
+        platformHandler = new PlayerPlatformHandler(
+            col,
+            groundChecker.IsGrounded);
     }
 
     private void OnEnable()
@@ -83,32 +101,44 @@ public class Player : MonoBehaviour
         }
     }
 
+    // ---------------------------
+    // UPDATE
+    // ---------------------------
     private void Update()
     {
-        if (GameManager.Instance != null && GameManager.Instance.State == GameState.Stalker)
+        if (GameManager.Instance != null &&
+            GameManager.Instance.State == GameState.Stalker)
         {
             movementController.SetMoveInput(0f);
             movementController.ClearQueuedInputs();
             return;
         }
 
-        movementController.SetMoveInput(moveAction.ReadValue<float>());
+        movementController.SetMoveInput(
+            moveAction.ReadValue<float>());
 
         if (interactAction.WasPressedThisFrame())
         {
             interactionHandler.HandleInteract();
-            UpdateInteractionPrompt(interactionHandler.CurrentInteractable);
+            UpdateInteractionPrompt(
+                interactionHandler.CurrentInteractable);
         }
-        if (dropAction != null && dropAction.WasPressedThisFrame())
+
+        if (dropAction != null &&
+            dropAction.WasPressedThisFrame())
         {
             movementController.QueueDrop();
         }
+
         if (jumpAction.WasPressedThisFrame())
         {
             movementController.QueueJump();
         }
     }
 
+    // ---------------------------
+    // PHYSICS
+    // ---------------------------
     private void FixedUpdate()
     {
         movementController.Tick(
@@ -120,14 +150,25 @@ public class Player : MonoBehaviour
             () => platformHandler.TryDropThroughPlatform(State));
     }
 
+    // ---------------------------
+    // GROUND CHECK
+    // ---------------------------
     public bool IsGrounded()
     {
-        return groundChecker != null && groundChecker.IsGrounded();
+        return groundChecker != null &&
+               groundChecker.IsGrounded();
     }
 
-    public void AttachToCrate(Crate crate, Vector2 attachPosition)
+    // ---------------------------
+    // CRATE SYSTEM
+    // ---------------------------
+    public void AttachToCrate(
+        Crate crate,
+        Vector2 attachPosition)
     {
-        if (interactionHandler.AttachToCrate(crate, attachPosition))
+        if (interactionHandler.AttachToCrate(
+            crate,
+            attachPosition))
         {
             movementController.ClearJumpQueue();
         }
@@ -138,6 +179,9 @@ public class Player : MonoBehaviour
         interactionHandler.DetachFromCrate(crate);
     }
 
+    // ---------------------------
+    // TRIGGERS
+    // ---------------------------
     private void OnTriggerEnter2D(Collider2D other)
     {
         interactionHandler.SetInteractable(other);
@@ -148,6 +192,9 @@ public class Player : MonoBehaviour
         interactionHandler.ClearInteractable(other);
     }
 
+    // ---------------------------
+    // COLLISIONS
+    // ---------------------------
     private void OnCollisionEnter2D(Collision2D collision)
     {
         interactionHandler.SetInteractable(collision.collider);
@@ -165,23 +212,33 @@ public class Player : MonoBehaviour
         platformHandler.OnCollisionExit(collision);
     }
 
-    private void HandleInteractableChanged(IPlayerInteractable interactable)
+    // ---------------------------
+    // UI PROMPTS
+    // ---------------------------
+    private void HandleInteractableChanged(
+        IPlayerInteractable interactable)
     {
         UpdateInteractionPrompt(interactable);
     }
 
-    private void UpdateInteractionPrompt(IPlayerInteractable interactable)
+    private void UpdateInteractionPrompt(
+        IPlayerInteractable interactable)
     {
         UIManager uiManager = UIManager.Instance;
+
         if (uiManager == null)
         {
             return;
         }
 
         IPlayerInteractable promptInteractable = interactable;
-        if (State == PlayerState.MovingObject && interactionHandler != null && interactionHandler.AttachedCrate != null)
+
+        if (State == PlayerState.MovingObject &&
+            interactionHandler != null &&
+            interactionHandler.AttachedCrate != null)
         {
-            promptInteractable = interactionHandler.AttachedCrate;
+            promptInteractable =
+                interactionHandler.AttachedCrate;
         }
 
         if (!IsInteractableValid(promptInteractable))
@@ -191,22 +248,30 @@ public class Player : MonoBehaviour
         }
 
         string verb = promptInteractable.InteractionVerb;
+
         if (string.IsNullOrWhiteSpace(verb))
         {
             verb = "Interact";
         }
 
-        uiManager.ShowInteractionPrompt($"{InteractionPromptPrefix}{verb}", promptInteractable.PromptAnchor);
+        uiManager.ShowInteractionPrompt(
+            $"{InteractionPromptPrefix}{verb}",
+            promptInteractable.PromptAnchor);
     }
 
-    private bool IsInteractableValid(IPlayerInteractable interactable)
+    // ---------------------------
+    // INTERACTABLES
+    // ---------------------------
+    private bool IsInteractableValid(
+        IPlayerInteractable interactable)
     {
         if (interactable == null)
         {
             return false;
         }
 
-        if (interactable is Object unityObject && unityObject == null)
+        if (interactable is Object unityObject &&
+            unityObject == null)
         {
             return false;
         }
@@ -215,9 +280,14 @@ public class Player : MonoBehaviour
     }
 }
 
+// ---------------------------
+// INTERFACE
+// ---------------------------
 public interface IPlayerInteractable
 {
     void Interact(Player player);
+
     string InteractionVerb { get; }
+
     Transform PromptAnchor { get; }
 }
