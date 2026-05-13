@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +6,8 @@ public enum GameState
 {
     Playing,
     Paused,
+    Dialogue,
+    Stalker,
     Ended
 }
 
@@ -22,9 +23,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameState initialState = GameState.Playing;
     [SerializeField] private bool freezeTimeWhenPaused = true;
     [SerializeField] private bool freezeTimeWhenEnded = true;
+    [SerializeField] private bool freezeTimeWhenDialogue = true;
 
     [Header("Timer")]
     [SerializeField] private bool runTimer = true;
+    [SerializeField] private float startingCountdownSeconds = 10f;
+
+    [Header("Stalker")]
+    [SerializeField] private Stalker stalkerPrefab;
+    [SerializeField] private bool findSceneStalkerIfPrefabMissing = true;
 
     [Header("Player Tracking")]
     [SerializeField] private Transform player;
@@ -32,17 +39,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string playerTag = "Player";
     [SerializeField] private float positionEpsilon = 0.0001f;
 
-    private float elapsedTime;
-    private GameState state;
-    private Vector3 lastPlayerPosition;
-    private float previousTimeScale = 1f;
+    private GameTimer timer;
+    private PlayerTracker playerTracker;
+    private GameStateController stateController;
+    private UIManager uiManager;
+    private Stalker spawnedStalker;
+    private bool hasSpawnedStalker;
 
-    public GameState State => state;
-    public float ElapsedTime => elapsedTime;
-    public Vector3 PlayerPosition => lastPlayerPosition;
-    public bool IsPlaying => state == GameState.Playing;
-    public bool IsPaused => state == GameState.Paused;
-    public bool IsEnded => state == GameState.Ended;
+    public GameState State => stateController.State;
+    public float RemainingTime => timer.RemainingTime;
+    public Vector3 PlayerPosition => playerTracker.LastPosition;
+    public bool IsPlaying => State == GameState.Playing;
+    public bool IsPaused => State == GameState.Paused;
+    public bool IsStalker => State == GameState.Stalker;
+    public bool IsEnded => State == GameState.Ended;
 
     private void Awake()
     {
@@ -55,32 +65,35 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+
+        timer = new GameTimer();
+        playerTracker = new PlayerTracker(playerTag, positionEpsilon);
+        stateController = new GameStateController();
     }
 
     private void Start()
     {
-        if (autoFindPlayer && player == null && !string.IsNullOrEmpty(playerTag))
-        {
-            GameObject playerObject = GameObject.FindGameObjectWithTag(playerTag);
-            if (playerObject != null)
-            {
-                player = playerObject.transform;
-            }
-        }
-
         if (player != null)
         {
-            lastPlayerPosition = player.position;
+            playerTracker.SetPlayer(player);
+        }
+        else
+        {
+            playerTracker.TryAutoFind(autoFindPlayer);
+            player = playerTracker.Player;
+        }
+
+        if (SoundAsset.Instance != null || SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayMusic(SoundAsset.Instance.BackgroundMusic, true);
         }
 
         SetState(initialState, true);
-        UIManager.Instance().Initialize(this);
+        BindUIManager();
         // TODO: Remove this before release
         string intro = "event 1";
         DialogueManager.Instance.AddLine(intro, "Line 1", 5f);
         DialogueManager.Instance.AddLine(intro, "Line 2", 4f);
-        
-        SoundManager.Instance.PlayMusic(SoundAsset.Instance.BackgroundMusic, true);
     }
 
     // TODO: Remove this before release
@@ -88,41 +101,53 @@ public class GameManager : MonoBehaviour
     public void PlayEvent1()
     {
         DialogueManager.Instance.Play("event 1");
+        DialogueTime();
+        
     }
 
     private void Update()
     {
-        if (state == GameState.Playing && runTimer)
+        if (State == GameState.Playing && runTimer)
         {
-            elapsedTime += Time.deltaTime;
-            OnTimerChanged?.Invoke(elapsedTime);
+            timer.Tick(Time.deltaTime);
+            OnTimerChanged?.Invoke(timer.RemainingTime);
+            if (!hasSpawnedStalker && timer.IsComplete)
+            {
+                SpawnStalker();
+            }
         }
 
-        if (player != null)
+        if (playerTracker.UpdatePosition())
         {
-            Vector3 pos = player.position;
-            if ((pos - lastPlayerPosition).sqrMagnitude > positionEpsilon)
-            {
-                lastPlayerPosition = pos;
-                OnPlayerPositionChanged?.Invoke(lastPlayerPosition);
-            }
+            OnPlayerPositionChanged?.Invoke(playerTracker.LastPosition);
         }
     }
 
     public void SetPlayer(Transform playerTransform)
     {
         player = playerTransform;
+        playerTracker.SetPlayer(playerTransform);
         if (player != null)
         {
-            lastPlayerPosition = player.position;
-            OnPlayerPositionChanged?.Invoke(lastPlayerPosition);
+            OnPlayerPositionChanged?.Invoke(playerTracker.LastPosition);
         }
+    }
+
+    public void RegisterPlayer(Player playerComponent)
+    {
+        if (playerComponent == null)
+        {
+            return;
+        }
+
+        SetPlayer(playerComponent.transform);
     }
 
     public void ResetTimer()
     {
-        elapsedTime = 0f;
-        OnTimerChanged?.Invoke(elapsedTime);
+        timer.Reset(startingCountdownSeconds);
+        hasSpawnedStalker = false;
+        OnTimerChanged?.Invoke(timer.RemainingTime);
     }
 
     public void StartGame(bool resetTimer = true)
@@ -133,7 +158,7 @@ public class GameManager : MonoBehaviour
         }
 
         SetState(GameState.Playing, false);
-        UIManager.Instance().SetState(GameState.Playing);
+        UIManager.Instance.SetState(GameState.Playing);
     }
 
     public void RestartGame()
@@ -151,6 +176,11 @@ public class GameManager : MonoBehaviour
         SetState(GameState.Playing, false);
     }
 
+    public void DialogueTime()
+    {
+        SetState(GameState.Dialogue, false);
+    }
+
     public void EndGame()
     {
         SetState(GameState.Ended, false);
@@ -158,52 +188,148 @@ public class GameManager : MonoBehaviour
 
     public string GetTimerString()
     {
-        int minutes = Mathf.FloorToInt(elapsedTime / 60f);
-        int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+        int minutes = Mathf.FloorToInt(timer.RemainingTime / 60f);
+        int seconds = Mathf.FloorToInt(timer.RemainingTime % 60f);
         return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    private void SpawnStalker()
+    {
+        hasSpawnedStalker = true;
+        SetState(GameState.Stalker, false);
+
+        if (spawnedStalker != null)
+        {
+            if (!spawnedStalker.gameObject.activeSelf)
+            {
+                spawnedStalker.gameObject.SetActive(true);
+            }
+            return;
+        }
+
+        if (stalkerPrefab != null)
+        {
+            spawnedStalker = Instantiate(stalkerPrefab);
+            return;
+        }
+
+        if (findSceneStalkerIfPrefabMissing)
+        {
+            spawnedStalker = FindAnyObjectByType<Stalker>(FindObjectsInactive.Include);
+            if (spawnedStalker != null && !spawnedStalker.gameObject.activeSelf)
+            {
+                spawnedStalker.gameObject.SetActive(true);
+            }
+        }
     }
 
     private void SetState(GameState newState, bool force)
     {
-        if (!force && state == newState)
+        stateController.SetState(
+            newState,
+            force,
+            freezeTimeWhenPaused,
+            freezeTimeWhenEnded,
+            freezeTimeWhenDialogue,
+            OnStateChanged,
+            state => UIManager.Instance.SetState(state));
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Time.timeScale = 1f;
+        ResolvePlayer();
+        BindUIManager();
+        if (runTimer)
+        {
+            ResetTimer();
+        }
+        SetState(initialState, true);
+
+        if (SoundAsset.Instance != null || SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayMusic(SoundAsset.Instance.BackgroundMusic, true);
+        }
+
+    }
+
+    private void ResolvePlayer()
+    {
+        if (player != null)
         {
             return;
         }
 
-        state = newState;
-
-        if (state == GameState.Paused && freezeTimeWhenPaused)
+        Player playerComponent = FindAnyObjectByType<Player>();
+        if (playerComponent != null)
         {
-            CacheTimeScale();
-            Time.timeScale = 0f;
-        }
-        else if (state == GameState.Ended && freezeTimeWhenEnded)
-        {
-            CacheTimeScale();
-            Time.timeScale = 0f;
-            UIManager.Instance().SetState(GameState.Ended);
-        }
-        else if (state == GameState.Playing)
-        {
-            Time.timeScale = Mathf.Approximately(previousTimeScale, 0f) ? 1f : previousTimeScale;
+            SetPlayer(playerComponent.transform);
+            return;
         }
 
-        OnStateChanged?.Invoke(state);
+        playerTracker.TryAutoFind(autoFindPlayer);
+        player = playerTracker.Player;
     }
 
-    private void CacheTimeScale()
+    private void BindUIManager()
     {
-        if (Time.timeScale > 0f)
+        UIManager instance = UIManager.Instance;
+        if (instance == null)
         {
-            previousTimeScale = Time.timeScale;
+            return;
         }
+
+        if (uiManager == instance)
+        {
+            return;
+        }
+
+        UnbindUIManager();
+        uiManager = instance;
+        uiManager.Initialize(this);
+        uiManager.PauseRequested += PauseGame;
+        uiManager.ContinueRequested += ResumeGame;
+    }
+
+    private void UnbindUIManager()
+    {
+        if (uiManager == null)
+        {
+            return;
+        }
+
+        uiManager.PauseRequested -= PauseGame;
+        uiManager.ContinueRequested -= ResumeGame;
+        uiManager = null;
     }
 
     private void OnDestroy()
     {
+        UnbindUIManager();
+
         if (Instance == this)
         {
             Instance = null;
         }
+    }
+
+    internal void LoadScene(string nextSceneName)
+    {
+        if (string.IsNullOrEmpty(nextSceneName))
+        {
+            return;
+        }
+
+        SceneManager.LoadScene(nextSceneName);
     }
 }
