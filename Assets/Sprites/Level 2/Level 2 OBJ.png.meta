@@ -1,0 +1,1482 @@
+fileFormatVersion: 2
+guid: 2ce517d1dacc53a4b999454225566e96
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5254624013943287715
+    second: Level 2 OBJ_0
+  - first:
+      213: -2965518387756514024
+    second: Level 2 OBJ_1
+  - first:
+      213: 4994349868900185533
+    second: Level 2 OBJ_2
+  - first:
+      213: -3010946949750081147
+    second: Level 2 OBJ_3
+  - first:
+      213: 3197760067010480281
+    second: Level 2 OBJ_4
+  - first:
+      213: 1245020394095325341
+    second: Level 2 OBJ_5
+  - first:
+      213: 4463430351673175708
+    second: Level 2 OBJ_6
+  - first:
+      213: -8229839942354144447
+    second: Level 2 OBJ_7
+  - first:
+      213: 6595612654525752135
+    second: Level 2 OBJ_8
+  - first:
+      213: 4938435127531729850
+    second: Level 2 OBJ_9
+  - first:
+      213: -46355940850573973
+    second: Level 2 OBJ_10
+  - first:
+      213: -998674212317845155
+    second: Level 2 OBJ_11
+  - first:
+      213: 4925310889422217310
+    second: Level 2 OBJ_12
+  - first:
+      213: 6201876041420693083
+    second: Level 2 OBJ_13
+  - first:
+      213: 2118271889789229591
+    second: Level 2 OBJ_14
+  - first:
+      213: 9010833792672990134
+    second: Level 2 OBJ_15
+  - first:
+      213: -4258685714148958525
+    second: Level 2 OBJ_16
+  - first:
+      213: -5176002596659479405
+    second: Level 2 OBJ_17
+  - first:
+      213: 6227497986075903828
+    second: Level 2 OBJ_18
+  - first:
+      213: -8293959355595076746
+    second: Level 2 OBJ_19
+  - first:
+      213: 2697101786104437485
+    second: Level 2 OBJ_20
+  - first:
+      213: 3418877357358855423
+    second: Level 2 OBJ_21
+  - first:
+      213: -2664230293512797340
+    second: Level 2 OBJ_22
+  - first:
+      213: 1236421446851432758
+    second: Level 2 OBJ_23
+  - first:
+      213: -1605205984576451137
+    second: Level 2 OBJ_24
+  - first:
+      213: 7456919332510355154
+    second: Level 2 OBJ_25
+  - first:
+      213: 3338703461158721045
+    second: Level 2 OBJ_26
+  - first:
+      213: -8588819200104739193
+    second: Level 2 OBJ_27
+  - first:
+      213: -8586189909521996335
+    second: Level 2 OBJ_28
+  - first:
+      213: 3034411039474898750
+    second: Level 2 OBJ_29
+  - first:
+      213: -520652047141713950
+    second: Level 2 OBJ_30
+  - first:
+      213: 4743443162536737400
+    second: Level 2 OBJ_31
+  - first:
+      213: -5993008239278231123
+    second: Level 2 OBJ_32
+  - first:
+      213: 3291407500578850300
+    second: Level 2 OBJ_33
+  - first:
+      213: -661372810553580003
+    second: Level 2 OBJ_34
+  - first:
+      213: 4392186265687882818
+    second: Level 2 OBJ_35
+  - first:
+      213: 824441149380874138
+    second: Level 2 OBJ_36
+  - first:
+      213: -5705277940282175698
+    second: Level 2 OBJ_37
+  - first:
+      213: 8203711888310062529
+    second: Level 2 OBJ_38
+  - first:
+      213: 8951531583427935467
+    second: Level 2 OBJ_39
+  - first:
+      213: 1103067645366277255
+    second: Level 2 OBJ_40
+  - first:
+      213: 4986815949238827158
+    second: Level 2 OBJ_41
+  - first:
+      213: 1196642137059422810
+    second: Level 2 OBJ_42
+  - first:
+      213: -7040181416325881838
+    second: Level 2 OBJ_43
+  - first:
+      213: -3585627482757566657
+    second: Level 2 OBJ_44
+  - first:
+      213: -4639876760165288375
+    second: Level 2 OBJ_45
+  - first:
+      213: 7302273334261451844
+    second: Level 2 OBJ_46
+  - first:
+      213: -5824202080354460234
+    second: Level 2 OBJ_47
+  - first:
+      213: -2580437993388565053
+    second: Level 2 OBJ_48
+  - first:
+      213: -8782416020072424634
+    second: Level 2 OBJ_49
+  - first:
+      213: -2375446348386200120
+    second: Level 2 OBJ_50
+  - first:
+      213: -9163388761822310843
+    second: Level 2 OBJ_51
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Level 2 OBJ_0
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 399
+        width: 73
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d505cacac43d317b0800000000000000
+      internalID: -5254624013943287715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_1
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 443
+        width: 50
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81542e20dbc58d6d0800000000000000
+      internalID: -2965518387756514024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_2
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 440
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db570db9ebe7f4540800000000000000
+      internalID: 4994349868900185533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_3
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 404
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 589b99ea3b7f636d0800000000000000
+      internalID: -3010946949750081147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_4
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 391
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 998c617a6d9b06c20800000000000000
+      internalID: 3197760067010480281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_5
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 399
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d903b28b373374110800000000000000
+      internalID: 1245020394095325341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_6
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 404
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9e2d2fa14a41fd30800000000000000
+      internalID: 4463430351673175708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_7
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 415
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 143f8ad0d2cb9cd80800000000000000
+      internalID: -8229839942354144447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_8
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 354
+        width: 22
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7432415a3c2588b50800000000000000
+      internalID: 6595612654525752135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_9
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 351
+        width: 19
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab3f6d26598d88440800000000000000
+      internalID: 4938435127531729850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_10
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 380
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6d5f54748f4b5ff0800000000000000
+      internalID: -46355940850573973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_11
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 351
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d59a378581ff322f0800000000000000
+      internalID: -998674212317845155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_12
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 351
+        width: 29
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e50ef5498283a5440800000000000000
+      internalID: 4925310889422217310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_13
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 373
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5ed2e5966d711650800000000000000
+      internalID: 6201876041420693083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_14
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 371
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71a15988f0d956d10800000000000000
+      internalID: 2118271889789229591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_15
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 367
+        width: 58
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b30c5ec799ec0d70800000000000000
+      internalID: 9010833792672990134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_16
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 385
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cede1e08eb16e4c0800000000000000
+      internalID: -4258685714148958525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_17
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 319
+        width: 29
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39cbc9ddf052b28b0800000000000000
+      internalID: -5176002596659479405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_18
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 342
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 457c3837c648c6650800000000000000
+      internalID: 6227497986075903828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_19
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 357
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67b4a3cc8efe5ec80800000000000000
+      internalID: -8293959355595076746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_20
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 351
+        width: 50
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dea93dbd8c70e6520800000000000000
+      internalID: 2697101786104437485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_21
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 349
+        width: 50
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff43000b7da427f20800000000000000
+      internalID: 3418877357358855423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_22
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 263
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 463c55be9a0c60bd0800000000000000
+      internalID: -2664230293512797340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_23
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 256
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 631114c41c6a82110800000000000000
+      internalID: 1236421446851432758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_24
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 234
+        width: 53
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbd4df969a929b9e0800000000000000
+      internalID: -1605205984576451137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_25
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 223
+        width: 73
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dec50ddf9c4c7760800000000000000
+      internalID: 7456919332510355154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_26
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 243
+        width: 47
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5169bb4db15755e20800000000000000
+      internalID: 3338703461158721045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_27
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 242
+        width: 48
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78ec3b961726ec880800000000000000
+      internalID: -8588819200104739193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_28
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 190
+        width: 57
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d5e5e4d4c9b7d880800000000000000
+      internalID: -8586189909521996335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_29
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 276
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e37dc6e63c46c1a20800000000000000
+      internalID: 3034411039474898750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_30
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 270
+        width: 101
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e7c98eb8b546c8f0800000000000000
+      internalID: -520652047141713950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_31
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 246
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87af14bac6814d140800000000000000
+      internalID: 4743443162536737400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_32
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 223
+        width: 19
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da1f4d932ce84dca0800000000000000
+      internalID: -5993008239278231123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_33
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 255
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf50f03eead6dad20800000000000000
+      internalID: 3291407500578850300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_34
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 223
+        width: 35
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d162ad2dee452d6f0800000000000000
+      internalID: -661372810553580003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_35
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 222
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24cfca9432e24fc30800000000000000
+      internalID: 4392186265687882818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_36
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 223
+        width: 34
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9fcf077bd0017b00800000000000000
+      internalID: 824441149380874138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_37
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 180
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2fcb90f0f7c2d0b0800000000000000
+      internalID: -5705277940282175698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_38
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 181
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cdce5e4f7079d170800000000000000
+      internalID: 8203711888310062529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_39
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 185
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bec79e14c8a3a3c70800000000000000
+      internalID: 8951531583427935467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_40
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 180
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 784984ddd22ee4f00800000000000000
+      internalID: 1103067645366277255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_41
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 162
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 698f1ae3faab43540800000000000000
+      internalID: 4986815949238827158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_42
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 155
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a52f0befea35b9010800000000000000
+      internalID: 1196642137059422810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_43
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 156
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 210e6956d404c4e90800000000000000
+      internalID: -7040181416325881838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_44
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 127
+        width: 29
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3f6b594dca4d3ec0800000000000000
+      internalID: -3585627482757566657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_45
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 127
+        width: 36
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 946f1c47ba8db9fb0800000000000000
+      internalID: -4639876760165288375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_46
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 124
+        width: 50
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44c067d88e2e65560800000000000000
+      internalID: 7302273334261451844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_47
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 126
+        width: 44
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bd916cd0174c2fa0800000000000000
+      internalID: -5824202080354460234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_48
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 127
+        width: 50
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cd17271151703cd0800000000000000
+      internalID: -2580437993388565053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_49
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 127
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64b12e539279e1680800000000000000
+      internalID: -8782416020072424634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_50
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 127
+        width: 34
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c5117db128b80fd0800000000000000
+      internalID: -2375446348386200120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 OBJ_51
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 45
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54e46c8887a15d080800000000000000
+      internalID: -9163388761822310843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Level 2 OBJ_0: -5254624013943287715
+      Level 2 OBJ_1: -2965518387756514024
+      Level 2 OBJ_10: -46355940850573973
+      Level 2 OBJ_11: -998674212317845155
+      Level 2 OBJ_12: 4925310889422217310
+      Level 2 OBJ_13: 6201876041420693083
+      Level 2 OBJ_14: 2118271889789229591
+      Level 2 OBJ_15: 9010833792672990134
+      Level 2 OBJ_16: -4258685714148958525
+      Level 2 OBJ_17: -5176002596659479405
+      Level 2 OBJ_18: 6227497986075903828
+      Level 2 OBJ_19: -8293959355595076746
+      Level 2 OBJ_2: 4994349868900185533
+      Level 2 OBJ_20: 2697101786104437485
+      Level 2 OBJ_21: 3418877357358855423
+      Level 2 OBJ_22: -2664230293512797340
+      Level 2 OBJ_23: 1236421446851432758
+      Level 2 OBJ_24: -1605205984576451137
+      Level 2 OBJ_25: 7456919332510355154
+      Level 2 OBJ_26: 3338703461158721045
+      Level 2 OBJ_27: -8588819200104739193
+      Level 2 OBJ_28: -8586189909521996335
+      Level 2 OBJ_29: 3034411039474898750
+      Level 2 OBJ_3: -3010946949750081147
+      Level 2 OBJ_30: -520652047141713950
+      Level 2 OBJ_31: 4743443162536737400
+      Level 2 OBJ_32: -5993008239278231123
+      Level 2 OBJ_33: 3291407500578850300
+      Level 2 OBJ_34: -661372810553580003
+      Level 2 OBJ_35: 4392186265687882818
+      Level 2 OBJ_36: 824441149380874138
+      Level 2 OBJ_37: -5705277940282175698
+      Level 2 OBJ_38: 8203711888310062529
+      Level 2 OBJ_39: 8951531583427935467
+      Level 2 OBJ_4: 3197760067010480281
+      Level 2 OBJ_40: 1103067645366277255
+      Level 2 OBJ_41: 4986815949238827158
+      Level 2 OBJ_42: 1196642137059422810
+      Level 2 OBJ_43: -7040181416325881838
+      Level 2 OBJ_44: -3585627482757566657
+      Level 2 OBJ_45: -4639876760165288375
+      Level 2 OBJ_46: 7302273334261451844
+      Level 2 OBJ_47: -5824202080354460234
+      Level 2 OBJ_48: -2580437993388565053
+      Level 2 OBJ_49: -8782416020072424634
+      Level 2 OBJ_5: 1245020394095325341
+      Level 2 OBJ_50: -2375446348386200120
+      Level 2 OBJ_51: -9163388761822310843
+      Level 2 OBJ_6: 4463430351673175708
+      Level 2 OBJ_7: -8229839942354144447
+      Level 2 OBJ_8: 6595612654525752135
+      Level 2 OBJ_9: 4938435127531729850
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

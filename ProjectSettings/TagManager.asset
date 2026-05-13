@@ -41,14 +41,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Skybox
+    uniqueID: 443402351
+    locked: 0
   - name: BG
-    uniqueID: 1345898881
+    uniqueID: 3524531265
     locked: 0
   - name: Player
-    uniqueID: 947221525
+    uniqueID: 2040615901
     locked: 0
   - name: FG
-    uniqueID: 2618907127
+    uniqueID: 4257286437
+    locked: 0
+  - name: UI
+    uniqueID: 688711429
     locked: 0
   m_RenderingLayers:
   - Default

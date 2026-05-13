@@ -1,0 +1,910 @@
+fileFormatVersion: 2
+guid: 8ff259b60ec042841a3f58906dd9610d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6351259905597729864
+    second: Level 5 Foreground_0
+  - first:
+      213: -3874919751027230752
+    second: Level 5 Foreground_1
+  - first:
+      213: 1736604763752851309
+    second: Level 5 Foreground_2
+  - first:
+      213: -1452823178406917668
+    second: Level 5 Foreground_3
+  - first:
+      213: -554679284985718715
+    second: Level 5 Foreground_4
+  - first:
+      213: -5035833661273449700
+    second: Level 5 Foreground_5
+  - first:
+      213: 6441877972463550917
+    second: Level 5 Foreground_6
+  - first:
+      213: 460672232215720013
+    second: Level 5 Foreground_7
+  - first:
+      213: -4433972701982826954
+    second: Level 5 Foreground_8
+  - first:
+      213: 319896819307967724
+    second: Level 5 Foreground_9
+  - first:
+      213: 482124683362316397
+    second: Level 5 Foreground_10
+  - first:
+      213: -3055273282749330659
+    second: Level 5 Foreground_11
+  - first:
+      213: 1461935932450249658
+    second: Level 5 Foreground_12
+  - first:
+      213: -2543864192966593502
+    second: Level 5 Foreground_13
+  - first:
+      213: 5107266984853056955
+    second: Level 5 Foreground_14
+  - first:
+      213: 5933390782678075094
+    second: Level 5 Foreground_15
+  - first:
+      213: 3266782250466480919
+    second: Level 5 Foreground_16
+  - first:
+      213: -6484668103136131323
+    second: Level 5 Foreground_17
+  - first:
+      213: 1593546835355483567
+    second: Level 5 Foreground_18
+  - first:
+      213: -6166056698097898381
+    second: Level 5 Foreground_19
+  - first:
+      213: -6179857550208268656
+    second: Level 5 Foreground_20
+  - first:
+      213: -2850629209646379010
+    second: Level 5 Foreground_21
+  - first:
+      213: -1710765237243392739
+    second: Level 5 Foreground_22
+  - first:
+      213: 4507896518617887270
+    second: Level 5 Foreground_23
+  - first:
+      213: -6719301840531626135
+    second: Level 5 Foreground_24
+  - first:
+      213: -3216425350432013360
+    second: Level 5 Foreground_25
+  - first:
+      213: -2918115018495389921
+    second: Level 5 Foreground_26
+  - first:
+      213: -3206753058794707347
+    second: Level 5 Foreground_27
+  - first:
+      213: 5989472907759388708
+    second: Level 5 Foreground_28
+  - first:
+      213: 3408631393336464600
+    second: Level 5 Foreground_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Level 5 Foreground_0
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 431
+        width: 43
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b39aaa24cacbd7a0800000000000000
+      internalID: -6351259905597729864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_1
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 387
+        width: 63
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e770e24405893ac0800000000000000
+      internalID: -3874919751027230752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_2
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 449
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d676dbae4d8a91810800000000000000
+      internalID: 1736604763752851309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_3
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 454
+        width: 72
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd90a91440986dbe0800000000000000
+      internalID: -1452823178406917668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_4
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 411
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 548982e01226d48f0800000000000000
+      internalID: -554679284985718715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_5
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 438
+        width: 43
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1b57df47ff1d1ab0800000000000000
+      internalID: -5035833661273449700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_6
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 424
+        width: 33
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c18a1ba2e5266950800000000000000
+      internalID: 6441877972463550917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_7
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 431
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d40ba1754f2a46600800000000000000
+      internalID: 460672232215720013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_8
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 336
+        width: 75
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63ed88ad15d5772c0800000000000000
+      internalID: -4433972701982826954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_9
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 377
+        width: 76
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce4f0a75670807400800000000000000
+      internalID: 319896819307967724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_10
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 411
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d60324958d9d0b600800000000000000
+      internalID: 482124683362316397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_11
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 349
+        width: 60
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1b0cf9032d7995d0800000000000000
+      internalID: -3055273282749330659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_12
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 351
+        width: 36
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abb93122cf6d94410800000000000000
+      internalID: 1461935932450249658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_13
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 352
+        width: 43
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 224f3659ef062bcd0800000000000000
+      internalID: -2543864192966593502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_14
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 145
+        width: 174
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbd2f356348a0e640800000000000000
+      internalID: 5107266984853056955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_15
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 311
+        width: 19
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d68a1bfa73a75250800000000000000
+      internalID: 5933390782678075094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_16
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 308
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7131b9d0621f55d20800000000000000
+      internalID: 3266782250466480919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_17
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 5
+        width: 217
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 507c34aa7b4d106a0800000000000000
+      internalID: -6484668103136131323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_18
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 205
+        width: 90
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fadbf4e576a6d1610800000000000000
+      internalID: 1593546835355483567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_19
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 245
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37ce4fc2a14cd6aa0800000000000000
+      internalID: -6166056698097898381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_20
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 254
+        width: 36
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0960255ec4cbc3aa0800000000000000
+      internalID: -6179857550208268656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_21
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 224
+        width: 81
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: effccac46d78078d0800000000000000
+      internalID: -2850629209646379010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_22
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 220
+        width: 104
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1d450ca4142248e0800000000000000
+      internalID: -1710765237243392739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_23
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 191
+        width: 34
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6227074fff34f8e30800000000000000
+      internalID: 4507896518617887270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_24
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 207
+        width: 49
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 967eb70939e30c2a0800000000000000
+      internalID: -6719301840531626135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_25
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 201
+        width: 99
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d340f46f26fc53d0800000000000000
+      internalID: -3216425350432013360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_26
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 206
+        width: 30
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1f89dcf9d5c087d0800000000000000
+      internalID: -2918115018495389921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_27
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 130
+        width: 66
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d66e42845135f73d0800000000000000
+      internalID: -3206753058794707347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_28
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 91
+        width: 65
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42803d240e1ee1350800000000000000
+      internalID: 5989472907759388708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 5 Foreground_29
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 87
+        width: 124
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d4901a4134ed4f20800000000000000
+      internalID: 3408631393336464600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Level 5 Foreground_0: -6351259905597729864
+      Level 5 Foreground_1: -3874919751027230752
+      Level 5 Foreground_10: 482124683362316397
+      Level 5 Foreground_11: -3055273282749330659
+      Level 5 Foreground_12: 1461935932450249658
+      Level 5 Foreground_13: -2543864192966593502
+      Level 5 Foreground_14: 5107266984853056955
+      Level 5 Foreground_15: 5933390782678075094
+      Level 5 Foreground_16: 3266782250466480919
+      Level 5 Foreground_17: -6484668103136131323
+      Level 5 Foreground_18: 1593546835355483567
+      Level 5 Foreground_19: -6166056698097898381
+      Level 5 Foreground_2: 1736604763752851309
+      Level 5 Foreground_20: -6179857550208268656
+      Level 5 Foreground_21: -2850629209646379010
+      Level 5 Foreground_22: -1710765237243392739
+      Level 5 Foreground_23: 4507896518617887270
+      Level 5 Foreground_24: -6719301840531626135
+      Level 5 Foreground_25: -3216425350432013360
+      Level 5 Foreground_26: -2918115018495389921
+      Level 5 Foreground_27: -3206753058794707347
+      Level 5 Foreground_28: 5989472907759388708
+      Level 5 Foreground_29: 3408631393336464600
+      Level 5 Foreground_3: -1452823178406917668
+      Level 5 Foreground_4: -554679284985718715
+      Level 5 Foreground_5: -5035833661273449700
+      Level 5 Foreground_6: 6441877972463550917
+      Level 5 Foreground_7: 460672232215720013
+      Level 5 Foreground_8: -4433972701982826954
+      Level 5 Foreground_9: 319896819307967724
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

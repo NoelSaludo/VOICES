@@ -10,6 +10,8 @@ public enum PlayerState
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Player : MonoBehaviour
 {
+    private const string InteractionPromptPrefix = "E to ";
+
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 6f;
     [SerializeField] private float jumpForce = 12f;
@@ -24,189 +26,268 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private Collider2D col;
-    private float moveInput;
-    private bool jumpQueued;
-    private PlayerState state = PlayerState.Free;
-    private IPlayerInteractable currentInteractable;
-    private Crate attachedCrate;
-    private FixedJoint2D moveJoint;
 
+    private InputAction moveAction;
+    private InputAction interactAction;
+    private InputAction jumpAction;
+    private InputAction dropAction;
+
+    private GroundChecker groundChecker;
+    private PlayerMovementController movementController;
+    private PlayerInteractionHandler interactionHandler;
+    private PlayerPlatformHandler platformHandler;
+
+    public float MoveInput =>
+        movementController != null ? movementController.MoveInput : 0f;
+
+    public PlayerState State =>
+        interactionHandler != null ? interactionHandler.State : PlayerState.Free;
+
+    // ---------------------------
+    // INIT
+    // ---------------------------
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
 
         if (groundLayers == 0)
-        {
             groundLayers = Physics2D.AllLayers;
+
+        moveAction = InputSystem.actions.FindAction("Move");
+        interactAction = InputSystem.actions.FindAction("Interact");
+        jumpAction = InputSystem.actions.FindAction("Jump");
+        dropAction = InputSystem.actions.FindAction("Drop");
+
+        groundChecker = new GroundChecker(
+            groundCheck,
+            col,
+            groundCheckRadius,
+            groundLayers);
+
+        movementController = new PlayerMovementController(rb);
+
+        interactionHandler = new PlayerInteractionHandler(
+            this,
+            rb,
+            gameObject);
+
+        platformHandler = new PlayerPlatformHandler(
+            col,
+            groundChecker.IsGrounded);
+    }
+
+    private void OnEnable()
+    {
+        if (interactionHandler != null)
+        {
+            interactionHandler.InteractableChanged += HandleInteractableChanged;
         }
     }
+
+    private void Start()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RegisterPlayer(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (interactionHandler != null)
+        {
+            interactionHandler.InteractableChanged -= HandleInteractableChanged;
+        }
+    }
+
+    // ---------------------------
+    // UPDATE
+    // ---------------------------
     private void Update()
     {
-        moveInput = 0f;
-
-        Keyboard keyboard = Keyboard.current;
-        if (keyboard != null)
+        if (GameManager.Instance != null &&
+            GameManager.Instance.State == GameState.Stalker)
         {
-            if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed)
-            {
-                moveInput = -1f;
-            }
+            movementController.SetMoveInput(0f);
+            movementController.ClearQueuedInputs();
+            return;
+        }
 
-            if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed)
-            {
-                moveInput = 1f;
-            }
+        movementController.SetMoveInput(
+            moveAction.ReadValue<float>());
 
-            if (state == PlayerState.Free && keyboard.spaceKey.wasPressedThisFrame)
-            {
-                jumpQueued = true;
-            }
+        if (interactAction.WasPressedThisFrame())
+        {
+            interactionHandler.HandleInteract();
+            UpdateInteractionPrompt(
+                interactionHandler.CurrentInteractable);
+        }
 
-            if (keyboard.eKey.wasPressedThisFrame)
-            {
-                HandleInteract();
-            }
+        if (dropAction != null &&
+            dropAction.WasPressedThisFrame())
+        {
+            movementController.QueueDrop();
+        }
+
+        if (jumpAction.WasPressedThisFrame())
+        {
+            movementController.QueueJump();
         }
     }
 
+    // ---------------------------
+    // PHYSICS
+    // ---------------------------
     private void FixedUpdate()
     {
-        float speed = moveSpeed;
-        if (state == PlayerState.MovingObject)
-        {
-            speed *= movingObjectSpeedMultiplier;
-        }
-
-        Vector2 velocity = rb.linearVelocity;
-        velocity.x = moveInput * speed;
-        rb.linearVelocity = velocity;
-
-        if (state == PlayerState.Free && jumpQueued && IsGrounded())
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }
-
-        jumpQueued = false;
+        movementController.Tick(
+            State,
+            moveSpeed,
+            jumpForce,
+            movingObjectSpeedMultiplier,
+            groundChecker.IsGrounded,
+            () => platformHandler.TryDropThroughPlatform(State));
     }
 
-    private bool IsGrounded()
+    // ---------------------------
+    // GROUND CHECK
+    // ---------------------------
+    public bool IsGrounded()
     {
-        Vector2 checkPos;
-
-        if (groundCheck != null)
-        {
-            checkPos = groundCheck.position;
-        }
-        else
-        {
-            float y = col.bounds.min.y - 0.02f;
-            checkPos = new Vector2(col.bounds.center.x, y);
-        }
-
-        return Physics2D.OverlapCircle(checkPos, groundCheckRadius, groundLayers) != null;
+        return groundChecker != null &&
+               groundChecker.IsGrounded();
     }
 
-    private void HandleInteract()
+    // ---------------------------
+    // CRATE SYSTEM
+    // ---------------------------
+    public void AttachToCrate(
+        Crate crate,
+        Vector2 attachPosition)
     {
-        if (state == PlayerState.MovingObject && attachedCrate != null)
+        if (interactionHandler.AttachToCrate(
+            crate,
+            attachPosition))
         {
-            attachedCrate.Interact(this);
-            return;
-        }
-
-        if (currentInteractable != null)
-        {
-            currentInteractable.Interact(this);
-        }
-    }
-
-    public void AttachToCrate(Crate crate, Vector2 attachPosition)
-    {
-        if (crate == null || state == PlayerState.MovingObject)
-        {
-            return;
-        }
-
-        attachedCrate = crate;
-        state = PlayerState.MovingObject;
-        rb.position = attachPosition;
-        rb.linearVelocity = Vector2.zero;
-        jumpQueued = false;
-
-        if (moveJoint != null)
-        {
-            Destroy(moveJoint);
-        }
-
-        Rigidbody2D crateBody = crate.GetComponent<Rigidbody2D>();
-        if (crateBody != null)
-        {
-            moveJoint = gameObject.AddComponent<FixedJoint2D>();
-            moveJoint.connectedBody = crateBody;
-            moveJoint.autoConfigureConnectedAnchor = true;
-            moveJoint.enableCollision = false;
+            movementController.ClearJumpQueue();
         }
     }
 
     public void DetachFromCrate(Crate crate)
     {
-        if (attachedCrate != crate)
-        {
-            return;
-        }
-
-        attachedCrate = null;
-        state = PlayerState.Free;
-
-        if (moveJoint != null)
-        {
-            Destroy(moveJoint);
-            moveJoint = null;
-        }
+        interactionHandler.DetachFromCrate(crate);
     }
 
+    // ---------------------------
+    // TRIGGERS
+    // ---------------------------
     private void OnTriggerEnter2D(Collider2D other)
     {
-        SetInteractable(other);
+        interactionHandler.SetInteractable(other);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        ClearInteractable(other);
+        interactionHandler.ClearInteractable(other);
     }
 
+    // ---------------------------
+    // COLLISIONS
+    // ---------------------------
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        SetInteractable(collision.collider);
+        interactionHandler.SetInteractable(collision.collider);
+        platformHandler.OnCollisionEnter(collision);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        platformHandler.OnCollisionStay(collision);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        ClearInteractable(collision.collider);
+        interactionHandler.ClearInteractable(collision.collider);
+        platformHandler.OnCollisionExit(collision);
     }
 
-    private void SetInteractable(Collider2D other)
+    // ---------------------------
+    // UI PROMPTS
+    // ---------------------------
+    private void HandleInteractableChanged(
+        IPlayerInteractable interactable)
     {
-        IPlayerInteractable interactable = other.GetComponent<IPlayerInteractable>();
-        if (interactable != null)
-        {
-            currentInteractable = interactable;
-        }
+        UpdateInteractionPrompt(interactable);
     }
 
-    private void ClearInteractable(Collider2D other)
+    private void UpdateInteractionPrompt(
+        IPlayerInteractable interactable)
     {
-        IPlayerInteractable interactable = other.GetComponent<IPlayerInteractable>();
-        if (interactable != null && interactable == currentInteractable)
+        UIManager uiManager = UIManager.Instance;
+
+        if (uiManager == null)
         {
-            currentInteractable = null;
+            return;
         }
+
+        IPlayerInteractable promptInteractable = interactable;
+
+        if (State == PlayerState.MovingObject &&
+            interactionHandler != null &&
+            interactionHandler.AttachedCrate != null)
+        {
+            promptInteractable =
+                interactionHandler.AttachedCrate;
+        }
+
+        if (!IsInteractableValid(promptInteractable))
+        {
+            uiManager.HideInteractionPrompt();
+            return;
+        }
+
+        string verb = promptInteractable.InteractionVerb;
+
+        if (string.IsNullOrWhiteSpace(verb))
+        {
+            verb = "Interact";
+        }
+
+        uiManager.ShowInteractionPrompt(
+            $"{InteractionPromptPrefix}{verb}",
+            promptInteractable.PromptAnchor);
+    }
+
+    // ---------------------------
+    // INTERACTABLES
+    // ---------------------------
+    private bool IsInteractableValid(
+        IPlayerInteractable interactable)
+    {
+        if (interactable == null)
+        {
+            return false;
+        }
+
+        if (interactable is Object unityObject &&
+            unityObject == null)
+        {
+            return false;
+        }
+
+        return true;
     }
 }
 
+// ---------------------------
+// INTERFACE
+// ---------------------------
 public interface IPlayerInteractable
 {
     void Interact(Player player);
+
+    string InteractionVerb { get; }
+
+    Transform PromptAnchor { get; }
 }

@@ -1,0 +1,1638 @@
+fileFormatVersion: 2
+guid: 9cdbb253baf0f914fa3f34dbefaf3854
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5998825020487749912
+    second: lesserbeings_0
+  - first:
+      213: 7741286412595702981
+    second: lesserbeings_1
+  - first:
+      213: 3790156940897344111
+    second: lesserbeings_2
+  - first:
+      213: 1335387109825674142
+    second: lesserbeings_3
+  - first:
+      213: -6804803295068393806
+    second: lesserbeings_4
+  - first:
+      213: 6564916439921066550
+    second: lesserbeings_5
+  - first:
+      213: -2678745493486162096
+    second: lesserbeings_6
+  - first:
+      213: 4041119690892366356
+    second: lesserbeings_7
+  - first:
+      213: -3924800686454708655
+    second: lesserbeings_8
+  - first:
+      213: 185964039302924224
+    second: lesserbeings_9
+  - first:
+      213: -5583914511212613952
+    second: lesserbeings_10
+  - first:
+      213: -5736648064023257993
+    second: lesserbeings_11
+  - first:
+      213: 6710932220691929383
+    second: lesserbeings_12
+  - first:
+      213: 7514345592001098614
+    second: lesserbeings_13
+  - first:
+      213: 8685028404589272871
+    second: lesserbeings_14
+  - first:
+      213: -6605651787927915755
+    second: lesserbeings_15
+  - first:
+      213: 3026038691625751854
+    second: lesserbeings_16
+  - first:
+      213: -8746556978575866861
+    second: lesserbeings_17
+  - first:
+      213: 7660041528319146141
+    second: lesserbeings_18
+  - first:
+      213: -4776566758916300744
+    second: lesserbeings_19
+  - first:
+      213: -3118067098062857636
+    second: lesserbeings_20
+  - first:
+      213: -1076960622021750734
+    second: lesserbeings_21
+  - first:
+      213: -6719188511806085972
+    second: lesserbeings_22
+  - first:
+      213: 7677677791470772282
+    second: lesserbeings_23
+  - first:
+      213: -2589385869191947668
+    second: lesserbeings_24
+  - first:
+      213: 8360830452206421273
+    second: lesserbeings_25
+  - first:
+      213: -2808556491597189498
+    second: lesserbeings_26
+  - first:
+      213: 4608795300178039699
+    second: lesserbeings_27
+  - first:
+      213: 1191256023622154503
+    second: lesserbeings_28
+  - first:
+      213: 8378630560225389728
+    second: lesserbeings_29
+  - first:
+      213: -794523360141013080
+    second: lesserbeings_30
+  - first:
+      213: -4635228807678052039
+    second: lesserbeings_31
+  - first:
+      213: 8278518168715012021
+    second: lesserbeings_32
+  - first:
+      213: -6268518785355564888
+    second: lesserbeings_33
+  - first:
+      213: 575852166784812561
+    second: lesserbeings_34
+  - first:
+      213: 8471021653594605259
+    second: lesserbeings_35
+  - first:
+      213: 3921539507233708589
+    second: lesserbeings_36
+  - first:
+      213: -753594154081721577
+    second: lesserbeings_37
+  - first:
+      213: 320090888366190426
+    second: lesserbeings_38
+  - first:
+      213: 1768507877490946574
+    second: lesserbeings_39
+  - first:
+      213: 53219647222737636
+    second: lesserbeings_40
+  - first:
+      213: -4908043649243784874
+    second: lesserbeings_41
+  - first:
+      213: -5032510642762184083
+    second: lesserbeings_42
+  - first:
+      213: 696634100314747944
+    second: lesserbeings_43
+  - first:
+      213: 1646784333193956806
+    second: lesserbeings_44
+  - first:
+      213: -4225122825025240945
+    second: lesserbeings_45
+  - first:
+      213: -8915304195188066692
+    second: lesserbeings_46
+  - first:
+      213: -7141632209825300515
+    second: lesserbeings_47
+  - first:
+      213: 6775746437604937473
+    second: lesserbeings_48
+  - first:
+      213: 8709722561179936808
+    second: lesserbeings_49
+  - first:
+      213: -2349704332834922364
+    second: lesserbeings_50
+  - first:
+      213: 1939914934398736253
+    second: lesserbeings_51
+  - first:
+      213: 2396051636505824832
+    second: lesserbeings_52
+  - first:
+      213: 6142129614067570855
+    second: lesserbeings_53
+  - first:
+      213: 5500166015865668075
+    second: lesserbeings_54
+  - first:
+      213: 2273590524254439822
+    second: lesserbeings_55
+  - first:
+      213: -2405861383026201157
+    second: lesserbeings_56
+  - first:
+      213: -4377382886727504447
+    second: lesserbeings_57
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: lesserbeings_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 55
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 811d5efa29b104350800000000000000
+      internalID: 5998825020487749912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_1
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 55
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cc23572af29e6b60800000000000000
+      internalID: 7741286412595702981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_2
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 55
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6ada2918a7599430800000000000000
+      internalID: 3790156940897344111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_3
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 55
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9b7bce408f388210800000000000000
+      internalID: 1335387109825674142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_4
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 55
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2be6a0fd47b7091a0800000000000000
+      internalID: -6804803295068393806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_5
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 55
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6320e9d38b44b1b50800000000000000
+      internalID: 6564916439921066550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_6
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 55
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05f24119a2f23dad0800000000000000
+      internalID: -2678745493486162096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_7
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 55
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 412d976b2f0f41830800000000000000
+      internalID: 4041119690892366356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_8
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 55
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15668a5f19e4889c0800000000000000
+      internalID: -3924800686454708655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_9
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 55
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c7c5a7fe4da49200800000000000000
+      internalID: 185964039302924224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_10
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 55
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cee50f3653f182b0800000000000000
+      internalID: -5583914511212613952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_11
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 55
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77c1676daf45360b0800000000000000
+      internalID: -5736648064023257993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_12
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 55
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 729d0167c45022d50800000000000000
+      internalID: 6710932220691929383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_13
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 55
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6737fb2d081584860800000000000000
+      internalID: 7514345592001098614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_14
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 55
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72f98b7915b678870800000000000000
+      internalID: 8685028404589272871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_15
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 55
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 513f1a672b20454a0800000000000000
+      internalID: -6605651787927915755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_16
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 46
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e25d0fa4826aef920800000000000000
+      internalID: 3026038691625751854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_17
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 46
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 314854ce4ccfd9680800000000000000
+      internalID: -8746556978575866861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_18
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 46
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d98f3347f2fed4a60800000000000000
+      internalID: 7660041528319146141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_19
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 38
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 830ead017d936bdb0800000000000000
+      internalID: -4776566758916300744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_20
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 46
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5a512a9e766ab4d0800000000000000
+      internalID: -3118067098062857636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_21
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 38
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2305f4f250edd01f0800000000000000
+      internalID: -1076960622021750734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_22
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 38
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca4a9e6f5a5a0c2a0800000000000000
+      internalID: -6719188511806085972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_23
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 46
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a306584f5479c8a60800000000000000
+      internalID: 7677677791470772282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_24
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 38
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6ad5686547a01cd0800000000000000
+      internalID: -2589385869191947668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_25
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 38
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 915480baff2a70470800000000000000
+      internalID: 8360830452206421273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_26
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 46
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68e6bb250c00609d0800000000000000
+      internalID: -2808556491597189498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_27
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 38
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3931a9538eab5ff30800000000000000
+      internalID: 4608795300178039699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_28
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 46
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 709fa8cba01388010800000000000000
+      internalID: 1191256023622154503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_29
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 38
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ac67764a10e64470800000000000000
+      internalID: 8378630560225389728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_30
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 46
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8af8b09a63949f4f0800000000000000
+      internalID: -794523360141013080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_31
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 38
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93931b935fb5cafb0800000000000000
+      internalID: -4635228807678052039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_32
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 46
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b720e8b96433e270800000000000000
+      internalID: 8278518168715012021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_33
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 38
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a8b403706fb109a0800000000000000
+      internalID: -6268518785355564888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_34
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 38
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1160954ae76ddf700800000000000000
+      internalID: 575852166784812561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_35
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 38
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc60623005d1f8570800000000000000
+      internalID: 8471021653594605259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_36
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 38
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2a5355976b1c6630800000000000000
+      internalID: 3921539507233708589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_37
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 38
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 713e52d0c12ba85f0800000000000000
+      internalID: -753594154081721577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_38
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 38
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5fe7e097f0317400800000000000000
+      internalID: 320090888366190426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_39
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 38
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e02f35c6b800b8810800000000000000
+      internalID: 1768507877490946574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_40
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 38
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ea68c7bcf21db000800000000000000
+      internalID: 53219647222737636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_41
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65956b01e4023ebb0800000000000000
+      internalID: -4908043649243784874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_42
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 29
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6a89c9db3ee82ab0800000000000000
+      internalID: -5032510642762184083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_43
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8243fa7f501faa900800000000000000
+      internalID: 696634100314747944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_44
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cd44b140ad8ad610800000000000000
+      internalID: 1646784333193956806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_45
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 28
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f80c9f12d295d55c0800000000000000
+      internalID: -4225122825025240945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_46
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 29
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c76f34dd11a764480800000000000000
+      internalID: -8915304195188066692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_47
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddfffd8d753d3ec90800000000000000
+      internalID: -7141632209825300515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_48
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10f8f8d4c79480e50800000000000000
+      internalID: 6775746437604937473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_49
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 828e557f5862fd870800000000000000
+      internalID: 8709722561179936808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_50
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 480ad2acb5c246fd0800000000000000
+      internalID: -2349704332834922364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_51
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d77df4fca56fbea10800000000000000
+      internalID: 1939914934398736253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_52
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04e4c61c44c704120800000000000000
+      internalID: 2396051636505824832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_53
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a897e2775a3d3550800000000000000
+      internalID: 6142129614067570855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_54
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 29
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be1495da9d3845c40800000000000000
+      internalID: 5500166015865668075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_55
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8941ea298a6d8f10800000000000000
+      internalID: 2273590524254439822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_56
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbda4e5a1d9ac9ed0800000000000000
+      internalID: -2405861383026201157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesserbeings_57
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cdabb6f4796043c0800000000000000
+      internalID: -4377382886727504447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      lesserbeings_0: 5998825020487749912
+      lesserbeings_1: 7741286412595702981
+      lesserbeings_10: -5583914511212613952
+      lesserbeings_11: -5736648064023257993
+      lesserbeings_12: 6710932220691929383
+      lesserbeings_13: 7514345592001098614
+      lesserbeings_14: 8685028404589272871
+      lesserbeings_15: -6605651787927915755
+      lesserbeings_16: 3026038691625751854
+      lesserbeings_17: -8746556978575866861
+      lesserbeings_18: 7660041528319146141
+      lesserbeings_19: -4776566758916300744
+      lesserbeings_2: 3790156940897344111
+      lesserbeings_20: -3118067098062857636
+      lesserbeings_21: -1076960622021750734
+      lesserbeings_22: -6719188511806085972
+      lesserbeings_23: 7677677791470772282
+      lesserbeings_24: -2589385869191947668
+      lesserbeings_25: 8360830452206421273
+      lesserbeings_26: -2808556491597189498
+      lesserbeings_27: 4608795300178039699
+      lesserbeings_28: 1191256023622154503
+      lesserbeings_29: 8378630560225389728
+      lesserbeings_3: 1335387109825674142
+      lesserbeings_30: -794523360141013080
+      lesserbeings_31: -4635228807678052039
+      lesserbeings_32: 8278518168715012021
+      lesserbeings_33: -6268518785355564888
+      lesserbeings_34: 575852166784812561
+      lesserbeings_35: 8471021653594605259
+      lesserbeings_36: 3921539507233708589
+      lesserbeings_37: -753594154081721577
+      lesserbeings_38: 320090888366190426
+      lesserbeings_39: 1768507877490946574
+      lesserbeings_4: -6804803295068393806
+      lesserbeings_40: 53219647222737636
+      lesserbeings_41: -4908043649243784874
+      lesserbeings_42: -5032510642762184083
+      lesserbeings_43: 696634100314747944
+      lesserbeings_44: 1646784333193956806
+      lesserbeings_45: -4225122825025240945
+      lesserbeings_46: -8915304195188066692
+      lesserbeings_47: -7141632209825300515
+      lesserbeings_48: 6775746437604937473
+      lesserbeings_49: 8709722561179936808
+      lesserbeings_5: 6564916439921066550
+      lesserbeings_50: -2349704332834922364
+      lesserbeings_51: 1939914934398736253
+      lesserbeings_52: 2396051636505824832
+      lesserbeings_53: 6142129614067570855
+      lesserbeings_54: 5500166015865668075
+      lesserbeings_55: 2273590524254439822
+      lesserbeings_56: -2405861383026201157
+      lesserbeings_57: -4377382886727504447
+      lesserbeings_6: -2678745493486162096
+      lesserbeings_7: 4041119690892366356
+      lesserbeings_8: -3924800686454708655
+      lesserbeings_9: 185964039302924224
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
