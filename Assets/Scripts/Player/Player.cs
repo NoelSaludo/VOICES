@@ -256,9 +256,6 @@ public class Player : MonoBehaviour
     // ---------------------------
     // INTERACTABLES
     // ---------------------------
-    private void OnTriggerEnter2D(Collider2D other) => SetInteractable(other);
-
-    private void OnTriggerExit2D(Collider2D other) => ClearInteractable(other);
 
     private bool IsInteractableValid(IPlayerInteractable interactable)
     {
