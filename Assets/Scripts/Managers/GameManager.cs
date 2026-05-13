@@ -250,10 +250,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         ResolvePlayer();
         BindUIManager();
-        if (runTimer)
-        {
-            ResetTimer();
-        }
+        ResetTimer();
         SetState(initialState, true);
 
         if (SoundAsset.Instance != null || SoundManager.Instance != null)

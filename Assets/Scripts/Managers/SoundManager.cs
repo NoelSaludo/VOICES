@@ -101,6 +101,13 @@ public class SoundManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Awake();
+        if (musicSource == null || sfxSource == null)
+        {
+            musicSource = musicSource != null ? musicSource : GameObject.Find("Music Source")?.AddComponent<AudioSource>();
+            sfxSource = sfxSource != null ? sfxSource : GameObject.Find("SFX Source")?.AddComponent<AudioSource>();
+            musicBus = new AudioBus(musicSource);
+            sfxBus = new AudioBus(sfxSource);
+            UpdateVolumes();
+        }
     }
 }
